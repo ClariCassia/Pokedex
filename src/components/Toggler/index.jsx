@@ -1,33 +1,38 @@
 import React from 'react';
-import {
-  ToggleContainer,
-  ToggleInput,
-  ToggleHandleWrapper,
-  ToggleHandle,
-  ToggleHandleKnob,
-  ToggleHandleBarWrapper,
-  ToggleHandleBar,
-  ToggleBase,
-  ToggleBaseInside
-} from './style';
+import PropTypes from 'prop-types';
+import './style.css'
 
-const Toggle = () => {
-  return (
-    <ToggleContainer>
-      <ToggleInput className="toggle-input" type="checkbox" />
-      <ToggleHandleWrapper className="toggle-handle-wrapper">
-        <ToggleHandle className="toggle-handle">
-          <ToggleHandleKnob className="toggle-handle-knob" />
-          <ToggleHandleBarWrapper className="toggle-handle-bar-wrapper">
-            <ToggleHandleBar className="toggle-handle-bar" />
-          </ToggleHandleBarWrapper>
-        </ToggleHandle>
-      </ToggleHandleWrapper>
-      <ToggleBase className="toggle-base">
-        <ToggleBaseInside className="toggle-base-inside" />
-      </ToggleBase>
-    </ToggleContainer>
-  );
+const Toggler = ({ checked, onChange }) => {
+    return (
+        <span className="theme__toggle-wrap">
+            <input
+                id="theme"
+                className="theme__toggle"
+                type="checkbox"
+                role="switch"
+                name="theme"
+                checked={checked}
+                onChange={onChange}
+            />
+            <span className="theme__fill"></span>
+            <span className="theme__icon">
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+                <span className="theme__icon-part"></span>
+            </span>
+        </span>
+    );
 };
 
-export default Toggle;
+Toggler.propTypes = {
+    checked: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+};
+
+export default Toggler;

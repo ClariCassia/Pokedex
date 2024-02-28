@@ -1,7 +1,7 @@
 import { HeaderContainer, LogoContainer } from "./styles"
 import { LogoPokemon } from "../LogoPokemon/index"
 import { LogoPokebola } from "../LogoPokebola/index"
-import Toggler from "../Toggler"
+import TogglerTheme from '../TogglerTheme/index'
 
 export const Header = () => {
 
@@ -9,11 +9,11 @@ export const Header = () => {
         <>
             <HeaderContainer>
 
-                <div> <Toggler></Toggler></div>
+                <TogglerTheme/>
 
                 <LogoContainer>
-                    <LogoPokemon></LogoPokemon>
-                    <LogoPokebola></LogoPokebola>
+                    <LogoPokemon/>
+                    <LogoPokebola/>
                 </LogoContainer>
 
             </HeaderContainer></>
