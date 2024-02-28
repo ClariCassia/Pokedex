@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   justify-content: center; 
   background-color: #C62828;  
   padding:   25px ;
-  max-height: 120px;
+  max-height: 180px;
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;  
@@ -21,7 +21,7 @@ height: 120px;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: yellow ;
+
 
 img {
     width: 400px;
