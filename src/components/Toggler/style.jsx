@@ -6,6 +6,10 @@ export const ToggleContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  
+  @media (max-width: 768px) {
+    --knob-size: 1.25em;
+  }
 `;
 
 export const ToggleInput = styled.input`
