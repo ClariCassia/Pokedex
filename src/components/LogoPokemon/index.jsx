@@ -5,3 +5,5 @@ export const LogoPokemon = () =>{
         <img src={logo} alt="" />
     )
 }
+
+export default LogoPokemon

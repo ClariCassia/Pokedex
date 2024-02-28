@@ -6,3 +6,5 @@ export const LogoPokebola = () =>{
      <PokebolaAnime src={logoPokebola} alt="" />
     )
 }
+
+export default LogoPokebola

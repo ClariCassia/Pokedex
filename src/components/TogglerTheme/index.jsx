@@ -1,6 +1,6 @@
 import { useTheme } from './../../hooks/useTheme.jsx';
 import { themes } from '../../context/theme-context.jsx';
-import { useState } from 'react';
+import { useState }from 'react';
 import Toggler from '../Toggler/index.jsx'
 
 const TogglerTheme = () => {
