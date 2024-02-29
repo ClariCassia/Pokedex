@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import styled from "styled-components"
+import { ContainerCard, typeColors, colorsLabel } from './style'
 import getPokemon from "../../services/getPokemons"
 import CardPokemon from "../../components/Card"
 
@@ -18,11 +18,14 @@ const Home = () => {
         getList()
     }, [])
 
+    const getTypeColor = (type) => typeColors[type] || typeColors.normal;
+    const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
+
     return (
 
         <ContainerCard>
             {pokemons.map((pokemon, index) => (
-                <CardPokemon key={index} pokemon={pokemon} />
+                <CardPokemon key={index} pokemon={pokemon} colorslabel={getTypeColorLabel(pokemon.type)} color={getTypeColor(pokemon.type)} />
             ))}
         </ContainerCard>
     )
@@ -32,14 +35,6 @@ const Home = () => {
 export default Home
 
 
-const ContainerCard = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-flex-wrap: wrap;
-min-height: calc(100vh - 190px);
-/* background-color:blue; */
-max-width: 1024px;
-gap: 0 15px;
 
-`
+
+

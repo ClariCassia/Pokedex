@@ -1,14 +1,13 @@
-import styled from "styled-components"
+import { Card, Span } from './style'
 
-
-const CardPokemon = ({ pokemon }) => {
+const CardPokemon = ({ pokemon, color, colorslabel }) => {
     return (
-        <Card>
-            <span># {pokemon.order}</span>
+        <Card color={color} >
+            <Span colorslabel={colorslabel}># {pokemon.order}</Span>
 
             <div>
                 <img src={pokemon.imagem} alt={pokemon.nome} />
-                <h2>{pokemon.nome}</h2>
+                <h2>{pokemon.nome.charAt(0).toUpperCase() + pokemon.nome.slice(1)}</h2>
             </div>
 
         </Card>
@@ -17,43 +16,5 @@ const CardPokemon = ({ pokemon }) => {
 
 export default CardPokemon
 
-const Card = styled.div`
-background-color: yellow;
-display: flex;
-flex-direction: column;
-align-items: start;
-justify-content: space-between;
-padding: 15px;
-min-height: 300px;
 
-
-
-span{
-    /* background-color: red; */
-    margin-top: 0; 
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-}
-
-div{
-    
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* background-color:pink;  */
-    gap: 25px;  
-    flex: 1;
-}
-
-
-
-
-img{
-    width: 150px;
-}
-
-
-`
 
