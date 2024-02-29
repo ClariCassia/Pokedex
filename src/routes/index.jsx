@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from 'react-dom/client';
-import Home from '../../pages/Home'
-import Details from '../../pages/Details'
+import Home from '../pages/Home'
+import Details from '../pages/Details'
 
 
 const Rotas = ()=>{
