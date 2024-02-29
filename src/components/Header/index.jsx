@@ -1,7 +1,7 @@
 import { HeaderContainer, LogoContainer } from "./styles"
-import  LogoPokemon  from "../LogoPokemon/index"
-import  LogoPokebola  from "../LogoPokebola/index"
-import TogglerTheme from '../TogglerTheme/index'
+import  LogoPokemon  from "../LogoPokemon"
+import  LogoPokebola  from "../LogoPokebola"
+import TogglerTheme from '../TogglerTheme'
 
  const Header = () => {
 
