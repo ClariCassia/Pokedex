@@ -1,8 +1,13 @@
 import { Card, Span } from './style'
+import { useTheme } from '../../hooks/useTheme'
 
-const CardPokemon = ({ pokemon, color, colorslabel }) => {
+
+const CardPokemon = ({ pokemon, background, colorslabel, theme }) => { 
+  
+  
+  
     return (
-        <Card color={color} >
+        <Card background={background} shadow={theme}>
             <Span colorslabel={colorslabel}># {pokemon.order}</Span>
 
             <div>

@@ -7,6 +7,13 @@ justify-content: center;
 flex-wrap: wrap;
 max-width: 1024px;
 gap: 15px;
+
+@media (max-width: 768px) {   
+    padding: 20px;
+    max-width: 500px;
+    
+  }
+
 `
 
 export const typeColors = {

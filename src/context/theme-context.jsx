@@ -3,11 +3,14 @@ import { createContext, useState } from "react";
 export const themes = {
     light: {
         color: '#212121',
-        background: '#efffff'
+        background: '#efffff',
+        boxShadow:  '7px 7px 5px #22212150',
     },
     dark: {
         color: '#efffff',
-        background: '#212121'
+        background: '#212121',
+        boxShadow:  '7px 7px 5px #000000dd',
+        
     }
 }
 

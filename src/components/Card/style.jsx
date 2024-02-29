@@ -1,12 +1,13 @@
 import styled from "styled-components"
 
 export const Card = styled.div`
-background-color: ${props => props.color};
+box-shadow: ${props => props.shadow};
+background: ${props => props.background};
 display: flex;
 flex-direction: column;
 padding: 15px;
 border-radius: 8px;
-box-shadow:  7px 7px 5px #22212150;
+
              
 
 div{    
