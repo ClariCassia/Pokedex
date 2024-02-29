@@ -1,13 +1,17 @@
-import  Header from "./components/Header"
+import styled from "styled-components";
+import { useTheme } from "./hooks/useTheme"
 
 function App() { 
 
-  return (
-    <>
-    <Header></Header>
-     <h1>Teste</h1>
-    </>
-  )
+  const { theme } = useTheme();  
+
+  return <ContainerTheme theme = {theme}/> 
+     
 }
 
+const ContainerTheme = styled.div`
+background-color: ${props=> props.theme.background};
+min-height: calc(100vh - 190px);
+
+`
 export default App
