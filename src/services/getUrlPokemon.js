@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getList = async () => {
+const getListUrl = async () => {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=10`)
 
     const { results } = response.data
@@ -12,3 +12,6 @@ export const getList = async () => {
             .then((response) => response.data))
     )
 }
+
+
+export default getListUrl
