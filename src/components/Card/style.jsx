@@ -6,8 +6,8 @@ display: flex;
 flex-direction: column;
 padding: 15px;
 border-radius: 8px;
-box-shadow:  7px 7px 5px #9c9c9c,
-             -7px -7px 5px #ffffff;
+box-shadow:  7px 7px 5px #22212150;
+             
 
 div{    
     display:flex;
