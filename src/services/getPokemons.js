@@ -1,19 +1,13 @@
-import getListUrl from '../services/getUrlPokemon';
-
-const fetchPokemonDetails = async () => {
-    
-    const urlPokemon = await getListUrl();
-    console.log("🚀 ~ fetchPokemonDetails ~ urlPokemon:", urlPokemon)
-
-    return urlPokemon.map((item) => ({
-        nome: item.name,
-        imagem: item.sprites?.other?.home?.front_default || '', 
-        type: item.types[0]?.type?.name || '' ,
-        order:item.order,
+const mapPokemonData = (pokemonData) => {
+    return pokemonData.map((data) => ({
+      nome: data.name,
+      imagem: data.sprites?.other?.home?.front_default || '',
+      order: data.order,
+      type: data.types[0]?.type?.name || '',
     }));
-};
-
-export default fetchPokemonDetails;
-
+  };
+  
+  export { mapPokemonData };
+  
 
 

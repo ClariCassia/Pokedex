@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const getListUrl = async () => {
+const getListUrl = async (offset = 0) => {
     try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10`);
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${offset}`);
         const { results } = response.data;
 
         const urlPokemon = results.map((result) => result.url);
