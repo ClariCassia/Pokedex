@@ -30,8 +30,7 @@ export const Span = styled.span`
     background-color: ${props => props.colorslabel};
     margin-top: 0; 
     font-size: 18px;
-    color: white;
-    font-weight: bold;
+    color: white;  
     width: 30%;
     padding: 2px;
     text-align: center;
