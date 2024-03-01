@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 import { ContainerCard, typeColors, colorsLabel } from './style'
-import getPokemon from "../../services/getPokemons"
+import getPokemon from '../../services/getPokemons'
 import CardPokemon from "../../components/Card"
-import { useTheme } from "../../hooks/useTheme"
-
+import { useTheme } from '../../hooks/useTheme'
 
 const Home = () => {
 
@@ -14,12 +13,20 @@ const Home = () => {
 
         const getList = async () => {
 
-            const updatedPokemons = await getPokemon()
+          try {
 
-            setPokemons(updatedPokemons)
-        }
-        getList()
-    }, [])
+            const updatedPokemons = await getPokemon();
+            setPokemons(updatedPokemons);
+
+          } catch (error) {
+            
+            console.error("Erro ao obter a lista de Pokémons:", error);
+            
+          }
+        };
+    
+        getList();
+      }, []);
 
     const getTypeColor = (type) => typeColors[type] || typeColors.normal;
     const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
@@ -28,12 +35,11 @@ const Home = () => {
 
         <ContainerCard>
             {pokemons.map((pokemon, index) => (
-                <CardPokemon key={index} pokemon={pokemon} colorslabel={getTypeColorLabel(pokemon.type)} background={getTypeColor(pokemon.type)} theme={theme} />
+                <CardPokemon key={index} pokemon={pokemon} colorsLabel={getTypeColorLabel(pokemon.type)} background={getTypeColor(pokemon.type)} theme={theme} />
             ))}
         </ContainerCard>
     )
 }
-
 
 export default Home
 

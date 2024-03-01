@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { useTheme } from "./hooks/useTheme"
-import Rotas from "./routes";
+import styled from 'styled-components';
+import { useTheme } from './hooks/useTheme'
+import Rotas from './routes';
 
 function App() { 
 

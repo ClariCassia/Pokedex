@@ -12,7 +12,6 @@ const tada = keyframes`
   }
 `;
 
-
 export const PokebolaAnime = styled.img`
   animation: ${tada} 3s infinite;
 

@@ -6,9 +6,7 @@ background: ${props => props.background};
 display: flex;
 flex-direction: column;
 padding: 15px;
-border-radius: 8px;
-
-             
+border-radius: 8px;             
 
 div{    
     display:flex;
@@ -23,11 +21,9 @@ img{
     width: 150px;
 }
 
-h2{
-    font-family: 'SF Fedora', sans-serif;
+h2{   
     color: white;
 }
-
 `
 
 export const Span = styled.span`

@@ -3,7 +3,7 @@ import {PokebolaAnime} from './style'
 
 export const LogoPokebola = () =>{
     return (
-     <PokebolaAnime src={logoPokebola} alt="" />
+     <PokebolaAnime src={logoPokebola} alt="Pokebola animada"/>
     )
 }
 

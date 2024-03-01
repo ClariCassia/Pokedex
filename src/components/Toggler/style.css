@@ -1,10 +1,8 @@
-/* Default */
 .theme {
   display: flex;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-
 }
 
 .theme__fill,
@@ -108,14 +106,10 @@
 .theme__toggle {
   background-color: hsl(48, 90%, 85%);
   border-radius: 15% / 50%;
-  /* Ajuste o raio da borda para controlar a forma */
   box-shadow: 0 0 0 0.125em var(--primaryT);
-  padding: 0.15em;
-  /* Reduzindo o espaçamento interno */
-  width: 4em;
-  /* Reduzindo a largura */
+  padding: 0.15em; 
+  width: 4em; 
   height: 2em;
-  /* Reduzindo a altura */
   -webkit-appearance: none;
   appearance: none;
   transition: background-color var(--transDur) ease-in-out,
@@ -128,9 +122,7 @@
   border-radius: 50%;
   content: "";
   width: 1.5em;
-  /* Reduzindo o tamanho do círculo interno */
   height: 1.5em;
-  /* Reduzindo o tamanho do círculo interno */
   transition: 0.3s;
 }
 
@@ -144,11 +136,9 @@
   outline: transparent;
 }
 
-/* Checked */
 .theme__toggle:checked {
   background-color: hsl(198, 90%, 15%);
 }
-
 
 .theme__toggle:checked:before,
 .theme__toggle:checked~.theme__icon {
@@ -168,7 +158,6 @@
   transform: scale(1);
   top: 0.2em;
   left: -0.2em;
-
 }
 
 .theme__toggle:checked~.theme__icon .theme__icon-part~.theme__icon-part {

@@ -10,10 +10,8 @@ gap: 15px;
 
 @media (max-width: 768px) {   
     padding: 20px;
-    max-width: 500px;
-    
+    max-width: 500px;    
   }
-
 `
 
 export const typeColors = {
@@ -27,7 +25,6 @@ export const typeColors = {
     eletric: '#F2CB55',
     ground: '#F78551',
   };
-
 
   export const colorsLabel = {
     grass: '#5b8f56',

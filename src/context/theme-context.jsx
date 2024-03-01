@@ -9,8 +9,7 @@ export const themes = {
     dark: {
         color: '#efffff',
         background: '#212121',
-        boxShadow:  '7px 7px 5px #000000dd',
-        
+        boxShadow:  '7px 7px 5px #000000dd',        
     }
 }
 
