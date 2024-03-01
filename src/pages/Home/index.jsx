@@ -1,9 +1,9 @@
 import React from "react";
-import { ContainerCard,typeColors,colorsLabel } from './style';
+import { ContainerCard,typeColors,colorsLabel, ContainerHome } from './style';
 import { useTheme } from "../../hooks/useTheme";
-
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
+import { Button } from "../../components/Button";
 
 const Home = () => {
 
@@ -15,7 +15,7 @@ const Home = () => {
    const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
 
   return (
-    <div>   
+    <ContainerHome>   
       <ContainerCard>
         {pokemons.map((pokemon, index) => (
           <CardPokemon
@@ -27,9 +27,9 @@ const Home = () => {
           />
         ))}
       </ContainerCard>
-      <button onClick={carregarMaisPokemons}>Carregar mais pokemons</button>
-    </div>
-  );
+      <Button  label='Carregar Mais' onClick={carregarMaisPokemons} className="StickyButton"></Button>
+      
+    </ContainerHome>  );
 };
 
 export default Home;
