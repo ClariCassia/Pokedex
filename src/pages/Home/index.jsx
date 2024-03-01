@@ -1,49 +1,42 @@
-import { useState, useEffect } from 'react'
-import { ContainerCard, typeColors, colorsLabel } from './style'
-import getPokemon from '../../services/getPokemons'
-import CardPokemon from "../../components/Card"
-import { useTheme } from '../../hooks/useTheme'
+import React from "react";
+import { ContainerCard, typeColors, colorsLabel } from './style';
+import CardPokemon from "../../components/Card";
+import { useTheme } from "../../hooks/useTheme";
+import usePokemonList from "../../hooks/usePokemonList";
 
 const Home = () => {
 
-    const [pokemons, setPokemons] = useState([])
-    const {theme} = useTheme()
+  const { theme } = useTheme();
+  const { pokemons, loading, error } = usePokemonList();
 
-    useEffect(() => {
+  const getTypeColor = (type) => typeColors[type] || typeColors.normal;
+  const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
 
-        const getList = async () => {
+  const renderPokemons = () => {
+    return pokemons.map((pokemon, index) => (
 
-          try {
+      <CardPokemon
+        key={index}
+        pokemon={pokemon}
+        colorsLabel={getTypeColorLabel(pokemon.type)}
+        background={getTypeColor(pokemon.type)}
+        theme={theme}
+      />
 
-            const updatedPokemons = await getPokemon();
-            setPokemons(updatedPokemons);
+    ));
 
-          } catch (error) {
-            
-            console.error("Erro ao obter a lista de Pokémons:", error);
-            
-          }
-        };
-    
-        getList();
-      }, []);
+  };
 
-    const getTypeColor = (type) => typeColors[type] || typeColors.normal;
-    const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Erro ao carregar os Pokémons: {error.message}</div>;
+  }
+
+  return <ContainerCard>{renderPokemons()}</ContainerCard>;
   
-    return (
+};
 
-        <ContainerCard>
-            {pokemons.map((pokemon, index) => (
-                <CardPokemon key={index} pokemon={pokemon} colorsLabel={getTypeColorLabel(pokemon.type)} background={getTypeColor(pokemon.type)} theme={theme} />
-            ))}
-        </ContainerCard>
-    )
-}
-
-export default Home
-
-
-
-
-
+export default Home;
