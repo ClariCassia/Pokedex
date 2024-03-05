@@ -1,19 +1,24 @@
 
 import { Card, Span } from './style'
+import getDetalisPokemon from '../../services/getDetalisPokemon'
+import { Link } from 'react-router-dom';
 
 const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel, theme }) => {
-
+  
     return (
-        <Card background={background} shadow={theme}>
-            <Span colorslabel={colorsLabel}># {order}</Span>
+        <Link to={`/Details/${nome}`}>
+            <Card background={background} shadow={theme}>
 
-            <div>
-                <img src={imagem} alt={nome} />
-                <h2>{`${nome.charAt(0).toUpperCase()}${nome.slice(1)}`}</h2>
 
-            </div>
+                <Span colorslabel={colorsLabel}># {order}</Span>
 
-        </Card>
+                <div>
+                    <img src={imagem} alt={nome} />
+                    <h2>{`${nome.charAt(0).toUpperCase()}${nome.slice(1)}`}</h2>
+                </div>
+
+            </Card>
+        </Link>
     )
 }
 

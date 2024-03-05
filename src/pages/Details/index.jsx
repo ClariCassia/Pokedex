@@ -1,7 +1,18 @@
+import { useParams } from 'react-router-dom';
+
+import getDetalisPokemon from '../../services/getDetalisPokemon';
+
 
 const Details = () =>{
+
+    const { nome } = useParams();
+    console.log("🚀 ~ Details ~ nome:", nome)
+
     return(
-        <h1>Details</h1>
+         <div>
+      <h1>Detalhes do Pokémon: {nome}</h1>
+      
+    </div>
     )
 }
 
