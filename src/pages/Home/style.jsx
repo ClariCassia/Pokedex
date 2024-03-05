@@ -71,11 +71,10 @@ button{
     transition: transform 0.3s, color 0.3s;  
 }
 
-/* button:hover{  
-    color: #C62828; 
+button:hover{  
     cursor: pointer;
     transform: scale(1.1);
-} */
+}
 
 img{
     width: 35px;

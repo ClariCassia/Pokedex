@@ -1,20 +1,23 @@
 import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import createPokemonInfo from '../../services/getDetalisPokemon';
+import PokemonDetails from '../../components/PokemonDetails';
 
-import getDetalisPokemon from '../../services/getDetalisPokemon';
+const Details = () => {
+  const [pokemonInfo, setPokemonInfo] = useState(null);
+  
+  const { nome } = useParams();
 
+  useEffect(() => {
+    const fetchPokemonInfo = async () => {
+      const info = await createPokemonInfo(nome);
+      setPokemonInfo(info);
+    };
 
-const Details = () =>{
+    fetchPokemonInfo();
+  }, [nome]);
 
-    const { nome } = useParams();
-    console.log("🚀 ~ Details ~ nome:", nome)
+  return <PokemonDetails pokemonInfo={pokemonInfo} />;
+};
 
-    return(
-         <div>
-      <h1>Detalhes do Pokémon: {nome}</h1>
-      
-    </div>
-    )
-}
-
-
-export default Details
+export default Details;
