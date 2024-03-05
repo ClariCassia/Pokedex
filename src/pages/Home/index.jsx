@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerCard, typeColors, colorsLabel, ContainerHome,ContainerButton } from './style';
+import { ContainerCard, typeColors, colorsLabel, ContainerHome, ContainerButton } from './style';
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
@@ -11,10 +11,13 @@ const Home = () => {
 
   const { pokemons, carregarMaisPokemons } = usePokemonData();
 
+
   const { theme } = useTheme();
+
 
   const getTypeColor = (type) => typeColors[type] || typeColors.normal;
   const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
+  const textColor = theme.color === '#212121' ? '#004A94' : 'white';
 
   return (
     <ContainerHome>
@@ -30,7 +33,14 @@ const Home = () => {
         ))}
       </ContainerCard>
       <ContainerButton>
-        <Button label='Mostrar Mais' onClick={carregarMaisPokemons} className="StickyButton"></Button>
+        <Button
+          label="Mostrar Mais"      
+         textColor={textColor}
+          onClick={carregarMaisPokemons}
+        />
+
+
+
         <LogoPokebola></LogoPokebola>
       </ContainerButton>
     </ContainerHome>);

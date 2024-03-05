@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { bounce } from "../../animations/bounce";
 
+
 export const ContainerCard = styled.div`
   display: flex;
   align-items: center;
@@ -64,16 +65,17 @@ button{
     font-size: 20px;
     padding: 10px;
     background-color: transparent;  
-    color: #004A94; 
+    /* color: #004A94;  */   
+    color: ${props => props.textColor === '#212121' ?'#004A94': "white"};
     font-weight: bold;
     transition: transform 0.3s, color 0.3s;  
 }
 
-button:hover{  
+/* button:hover{  
     color: #C62828; 
     cursor: pointer;
     transform: scale(1.1);
-}
+} */
 
 img{
     width: 35px;

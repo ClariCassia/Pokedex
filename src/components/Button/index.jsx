@@ -1,9 +1,10 @@
-export const Button = ({ label, onClick }) => {
-
+export const Button = ({ label, textColor, onClick }) => {
     return (
-        <button onClick={onClick}>{label}</button>
-    )
-}
+      <button style={{ color: textColor }} onClick={onClick}>
+        {label}
+      </button>
+    );
+  };
 
 
 
