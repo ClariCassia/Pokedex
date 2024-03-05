@@ -151,6 +151,7 @@
 
 .theme__toggle:checked~.theme__fill {
   transform: translateX(0);
+  z-index: -1;
 }
 
 .theme__toggle:checked~.theme__icon .theme__icon-part:nth-child(1) {

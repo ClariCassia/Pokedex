@@ -46,12 +46,14 @@ const createPokemonInfo = async (nome) => {
       }
       return evolutionLine;
     };
-  
+
+    // Buscar habilidades
     const abilities = pokemonData.abilities.map(ability => ability.ability.name);
- 
+
+    // Buscar tipos
     const types = pokemonData.types.map(type => type.type.name);
 
-   
+    // Buscar fraquezas
     const weaknessesResponse = await axios.get(`https://pokeapi.co/api/v2/type/${types[0]}`);
     const weaknessesData = weaknessesResponse.data;
     const weaknesses = weaknessesData.damage_relations.double_damage_from.map(weakness => weakness.name);
