@@ -6,7 +6,8 @@ background: ${props => props.background};
 display: flex;
 flex-direction: column;
 padding: 15px;
-border-radius: 8px;             
+border-radius: 8px;   
+transition: transform 0.3s ease, box-shadow 0.3s ease;          
 
 div{    
     display:flex;
@@ -23,7 +24,12 @@ img{
 
 h2{   
     color: white;
+    
 }
+&:hover {
+    transform: scale(1.05); 
+    z-index: 2; 
+  }
 `
 
 export const Span = styled.span`
