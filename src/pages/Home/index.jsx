@@ -1,21 +1,23 @@
 import React from "react";
-import { ContainerCard,typeColors,colorsLabel, ContainerHome } from './style';
+import { ContainerCard, typeColors, colorsLabel, ContainerHome,ContainerButton } from './style';
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
 import { Button } from "../../components/Button";
 
+import LogoPokebola from '../../components/LogoPokebola'
+
 const Home = () => {
 
   const { pokemons, carregarMaisPokemons } = usePokemonData();
-  
+
   const { theme } = useTheme();
 
-   const getTypeColor = (type) => typeColors[type] || typeColors.normal;
-   const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
+  const getTypeColor = (type) => typeColors[type] || typeColors.normal;
+  const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
 
   return (
-    <ContainerHome>   
+    <ContainerHome>
       <ContainerCard>
         {pokemons.map((pokemon, index) => (
           <CardPokemon
@@ -27,9 +29,12 @@ const Home = () => {
           />
         ))}
       </ContainerCard>
-      <Button  label='Carregar Mais' onClick={carregarMaisPokemons} className="StickyButton"></Button>
-      
-    </ContainerHome>  );
+      <ContainerButton>
+        <Button label='Mostrar Mais' onClick={carregarMaisPokemons} className="StickyButton"></Button>
+        <LogoPokebola></LogoPokebola>
+      </ContainerButton>
+    </ContainerHome>);
 };
 
 export default Home;
+

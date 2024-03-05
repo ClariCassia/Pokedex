@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { bounce } from "../../animations/bounce";
 
 export const ContainerCard = styled.div`
   display: flex;
@@ -8,7 +9,6 @@ export const ContainerCard = styled.div`
   max-width: 1180px;
   gap: 15px;
   padding: 50px;
-  background-color: yellow;
 
   @media (max-width: 1024px) and (min-width: 800px) {
     padding: 20px;
@@ -42,7 +42,6 @@ export const typeColors = {
   flying: "#748FC9",
   eletric: "#F2CB55",
   ground: "#F78551"
-  // Adicione outros tipos, se necessário
 };
 
 export const colorsLabel = {
@@ -55,5 +54,30 @@ export const colorsLabel = {
   flying: "#4f6d99",
   eletric: "#b18e39",
   ground: "#b05c2c"
-  // Adicione outros tipos, se necessário
 };
+
+export const ContainerButton = styled.div`
+display: flex;
+align-items: center;
+
+button{
+    font-size: 20px;
+    padding: 10px;
+    background-color: transparent;  
+    color: #004A94; 
+    font-weight: bold;
+    transition: transform 0.3s, color 0.3s;  
+}
+
+button:hover{  
+    color: #C62828; 
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+img{
+    width: 35px;
+    animation: ${bounce} 3s infinite;    
+}
+
+`

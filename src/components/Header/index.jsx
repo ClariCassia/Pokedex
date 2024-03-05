@@ -10,8 +10,10 @@ import TogglerTheme from '../TogglerTheme'
                 <TogglerTheme/>
 
                 <LogoContainer>
+
                     <LogoPokemon/>
                     <LogoPokebola/>
+                    
                 </LogoContainer>
 
             </HeaderContainer>

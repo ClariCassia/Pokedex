@@ -1,7 +1,17 @@
-export const Button = ({label,onClick}) =>{
+export const Button = ({ label, onClick }) => {
 
-    return(
-        
+    return (
         <button onClick={onClick}>{label}</button>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
