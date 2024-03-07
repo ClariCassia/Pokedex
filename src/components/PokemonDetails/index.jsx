@@ -9,6 +9,10 @@ const StyledArrowLeft = styled(FaArrowLeft)`
   font-size: 30px; /* Tamanho do ícone */
 `;
 
+const firstLetterUppercase = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 const PokemonDetails = ({ pokemonInfo }) => {
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -20,11 +24,6 @@ const PokemonDetails = ({ pokemonInfo }) => {
     return <div>Loading...</div>;
   }
 
-  // Verifica se o gênero é diferente de 'Genderless' e se contém 'Male' ou 'Female'
-  if (pokemonInfo.gender !== 'Genderless' && (!pokemonInfo.gender || !pokemonInfo.gender.includes('Male') || !pokemonInfo.gender.includes('Female'))) {
-    return <div>No gender information available</div>;
-  }
-  
   let malePercentage = 0;
   let femalePercentage = 0;
 
@@ -51,14 +50,16 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
         <ContainerDescription theme={theme} background={getTypeColor(pokemonInfo.types[0])} color={getTypeColorLabel(pokemonInfo.types[0])}>
           <h2>{pokemonInfo.nome.charAt(0).toUpperCase() + pokemonInfo.nome.slice(1)}</h2>
-         
+
           <Teste>
             <span >Egg Groups:</span>
-            <p>{pokemonInfo.eggGroups.join(", ")}</p>
+            <p>{pokemonInfo.eggGroups.map(group => firstLetterUppercase(group)).join(", ")}</p>
+
             <span>Type:</span>
-            <p> {pokemonInfo.types.join(", ")}</p>
+            <p>{pokemonInfo.types.map(type => firstLetterUppercase(type)).join(", ")}</p>
+
           </Teste>
-         
+
           <span>Gender:</span>
           {pokemonInfo.gender === 'Genderless' ? (
             <p>Sem especificação de gênero</p>
@@ -77,20 +78,22 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
           <Teste>
             <span>Height:</span>
-            <p> {pokemonInfo.height} m</p>            
+            <p> {pokemonInfo.height} m</p>
             <span> Weight:</span>
             <p> {pokemonInfo.pokemonWeight} kg</p>
           </Teste>
 
           <span>Abilities:</span>
-          <p> {pokemonInfo.abilities.join(", ")}</p>
+          <p>{pokemonInfo.abilities.map(abilitie => firstLetterUppercase(abilitie)).join(", ")}</p>
+
           <span>Weaknesses:</span>
-          <p> {pokemonInfo.weaknesses.join(", ")}</p>
+          <p>{pokemonInfo.weaknesses.map(weaknesse => firstLetterUppercase(weaknesse)).join(", ")}</p>
+
 
           <span>Evolution Line:</span>
           <ul>
             {pokemonInfo.evolutionLine.map((pokemon, index) => (
-              <li key={index}>{pokemon}</li>
+              <li key={index}>{firstLetterUppercase(pokemon)}</li>
             ))}
           </ul>
         </ContainerDescription>
