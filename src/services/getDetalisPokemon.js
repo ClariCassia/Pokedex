@@ -4,7 +4,7 @@ const createPokemonInfo = async (nome) => {
   try {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`);
     const pokemonData = response.data;
-    console.log("🚀 ~ createPokemonInfo ~ pokemonData:", pokemonData)
+   
 
     const imagem = pokemonData.sprites?.other?.home?.front_default 
 
