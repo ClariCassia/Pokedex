@@ -10,37 +10,38 @@ const StyledArrowLeft = styled(FaArrowLeft)`
 `;
 
 const PokemonDetails = ({ pokemonInfo }) => {
-  console.log("🚀 ~ PokemonDetails ~ pokemonInfo:", pokemonInfo)
   const navigate = useNavigate();
-
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   const getTypeColor = (type) => typeColors[type] || typeColors.normal;
   const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
-
-
 
   if (!pokemonInfo) {
     return <div>Loading...</div>;
   }
 
-  if (!pokemonInfo.gender || !pokemonInfo.gender.includes('Male') || !pokemonInfo.gender.includes('Female')) {
+  // Verifica se o gênero é diferente de 'Genderless' e se contém 'Male' ou 'Female'
+  if (pokemonInfo.gender !== 'Genderless' && (!pokemonInfo.gender || !pokemonInfo.gender.includes('Male') || !pokemonInfo.gender.includes('Female'))) {
     return <div>No gender information available</div>;
   }
+  
+  let malePercentage = 0;
+  let femalePercentage = 0;
 
-  // Divide a string 'gender' em duas partes: Male e Female
-  const [maleString, femaleString] = pokemonInfo.gender.split(', ');
+  // Se o gênero não for 'Genderless', calcula as porcentagens
+  if (pokemonInfo.gender !== 'Genderless') {
+    const [maleString, femaleString] = pokemonInfo.gender.split(', ');
 
-  // Extrai os números da string usando expressão regular
-  const malePercentage = parseFloat(maleString.match(/\d+/)[0]);
-  const femalePercentage = parseFloat(femaleString.match(/\d+/)[0]);
-
+    // Verifica se maleString e femaleString são válidos antes de calcular as porcentagens
+    if (maleString && femaleString) {
+      malePercentage = parseFloat(maleString.match(/\d+/)[0]);
+      femalePercentage = parseFloat(femaleString.match(/\d+/)[0]);
+    }
+  }
 
   return (
-
     <>
       <Container>
-
         <div>
           <BackButton onClick={() => navigate(-1)}>
             <StyledArrowLeft />
@@ -59,23 +60,26 @@ const PokemonDetails = ({ pokemonInfo }) => {
           </Teste>
          
           <span>Gender:</span>
-          <ProgressBarContainer>
-            Masculino:
-            <ProgressBar color="#105be7b5" width={malePercentage}>
-              {malePercentage}%
-            </ProgressBar>
-            Feminino:
-            <ProgressBar color="#ff0783" width={femalePercentage}>
-              {femalePercentage}%
-            </ProgressBar>
-          </ProgressBarContainer>
+          {pokemonInfo.gender === 'Genderless' ? (
+            <p>Sem especificação de gênero</p>
+          ) : (
+            <ProgressBarContainer>
+              <div>Masculino:</div>
+              <ProgressBar color="#105be7b5" width={malePercentage}>
+                {malePercentage}%
+              </ProgressBar>
+              <div>Feminino:</div>
+              <ProgressBar color="#ff0783" width={femalePercentage}>
+                {femalePercentage}%
+              </ProgressBar>
+            </ProgressBarContainer>
+          )}
 
           <Teste>
             <span>Height:</span>
             <p> {pokemonInfo.height} m</p>            
             <span> Weight:</span>
             <p> {pokemonInfo.pokemonWeight} kg</p>
-
           </Teste>
 
           <span>Abilities:</span>
@@ -83,17 +87,13 @@ const PokemonDetails = ({ pokemonInfo }) => {
           <span>Weaknesses:</span>
           <p> {pokemonInfo.weaknesses.join(", ")}</p>
 
-         
-
           <span>Evolution Line:</span>
           <ul>
             {pokemonInfo.evolutionLine.map((pokemon, index) => (
               <li key={index}>{pokemon}</li>
             ))}
           </ul>
-
         </ContainerDescription>
-
       </Container>
     </>
   );
