@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerCard, typeColors, colorsLabel, ContainerHome, ContainerButton } from './style';
+import { ContainerCard,  ContainerHome, ContainerButton } from './style';
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
