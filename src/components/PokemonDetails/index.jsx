@@ -1,24 +1,16 @@
 import React from 'react';
+import {StyledArrowLeft} from './styles'
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
 import { useTheme } from '../../hooks/useTheme';
-
-const StyledArrowLeft = styled(FaArrowLeft)`
-  color: #000; /* Cor do ícone */
-  font-size: 30px; /* Tamanho do ícone */
-`;
-
-const firstLetterUppercase = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
+import firstLetterUppercase from '../../services/firstLetterUppercase'
+import {getTypeColor,getTypeColorLabel} from '../../services/getTypeColors'
 
 const PokemonDetails = ({ pokemonInfo }) => {
-  const navigate = useNavigate();
-  const { theme } = useTheme();
 
-  const getTypeColor = (type) => typeColors[type] || typeColors.normal;
-  const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
+  const navigate = useNavigate();
+
+  const { theme } = useTheme();
 
   if (!pokemonInfo) {
     return <div>Loading...</div>;
@@ -43,7 +35,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
       <Container>
         <div>
           <BackButton onClick={() => navigate(-1)}>
-            <StyledArrowLeft />
+          <StyledArrowLeft theme={theme}  />  
           </BackButton>
           <img src={pokemonInfo.imagem} alt="" />
         </div>
@@ -217,10 +209,7 @@ background-color: transparent;
   &:hover {
     opacity: 0.5;
   }
-
-  svg {
-    font-size: 30px;
-  }
+  
 `;
 const Teste = styled.div`
   
@@ -229,30 +218,6 @@ const Teste = styled.div`
     gap:20px;
   
     justify-content:space-between;
-
  
 `;
 
-export const typeColors = {
-  grass: "#8BBE8A",
-  fire: "#FFA756",
-  water: "#58ABF6",
-  poison: "#9F6E97",
-  normal: "#B5B9C4",
-  bug: "#8BD674",
-  flying: "#748FC9",
-  eletric: "#F2CB55",
-  ground: "#F78551"
-};
-
-export const colorsLabel = {
-  grass: "#5b8f56",
-  fire: "#e97110",
-  water: "#3a86c0",
-  poison: "#6e4b6f",
-  normal: "#7a7d88",
-  bug: "#5b8f43",
-  flying: "#4f6d99",
-  eletric: "#b18e39",
-  ground: "#b05c2c"
-};
