@@ -32,7 +32,7 @@ display: flex;
  export const ContainerDescription = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 550px;
+  max-width: 550px;
   gap: 20px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
@@ -119,4 +119,5 @@ export const Div = styled.div`
   display: flex;
   align-items: center;  
   justify-content: space-between;
+  gap:10px;
 `;

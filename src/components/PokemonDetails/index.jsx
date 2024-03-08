@@ -56,7 +56,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
         <Div>
           <span>Height:</span>
-          {height < 1 ? <p>{height} cm</p> : <p>{height} metros </p>}
+          {height < 1 ? <p>{height} cm</p> : <p>{height} metro(s) </p>}
           
 
           <span> Weight:</span>
