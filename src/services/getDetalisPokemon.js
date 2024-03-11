@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const createPokemonInfo = async (nome) => {
+
   try {
+
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`);
     const pokemonData = response.data;
-   
 
-    const imagem = pokemonData.sprites?.other?.home?.front_default 
+    const imagem = pokemonData.sprites?.other?.home?.front_default
 
     const speciesResponse = await axios.get(pokemonData.species.url);
     const speciesData = speciesResponse.data;
@@ -20,13 +21,8 @@ const createPokemonInfo = async (nome) => {
       gender = `Male: ${malePercentage}%, Female: ${femalePercentage}%`;
     }
 
-    const generationResponse = await axios.get(speciesData.generation.url);
-  
-   
-
     const height = pokemonData.height / 10;
     const weight = pokemonData.weight / 10;
-  
 
     const description = speciesData.flavor_text_entries.find(entry => entry.language.name === 'it').flavor_text;
 
@@ -45,34 +41,39 @@ const createPokemonInfo = async (nome) => {
         });
       }
       return evolutionLine;
-    };
-
-    // Buscar habilidades
-    const abilities = pokemonData.abilities.map(ability => ability.ability.name);
-
-    // Buscar tipos
+    };   
+    
+    const abilities = await Promise.all(pokemonData.abilities.map(async (ability) => {
+      const abilityResponse = await axios.get(ability.ability.url);
+      return {
+        name: ability.ability.name,
+        description: abilityResponse.data.effect_entries.find(entry => entry.language.name === 'en').effect,
+      };
+    }));    
+  
     const types = pokemonData.types.map(type => type.type.name);
 
-    // Buscar fraquezas
     const weaknessesResponse = await axios.get(`https://pokeapi.co/api/v2/type/${types[0]}`);
     const weaknessesData = weaknessesResponse.data;
     const weaknesses = weaknessesData.damage_relations.double_damage_from.map(weakness => weakness.name);
 
     const evolutionLine = extractEvolutionLine(evolutionChainData.chain);
 
+    const moves = pokemonData.moves.map(move => move.move.name);
+
     return {
       nome,
       imagem,
       description,
-      gender,  
+      gender,
       height,
-      weight,     
+      weight,
       captureRate,
       eggGroups,
       pokemonWeight,
       evolutionLine, abilities,
       types,
-      weaknesses
+      weaknesses, moves
     };
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);

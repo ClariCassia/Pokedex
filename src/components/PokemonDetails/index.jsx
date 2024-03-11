@@ -1,21 +1,28 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container,ContainerDescription,ProgressBarContainer,ProgressBar,BackButton ,Div} from './styles';
+import { Container, ContainerDescription, ProgressBarContainer, ProgressBar, BackButton, Div, } from './styles';
 
 import { useTheme } from '../../hooks/useTheme';
 import { firstLetterUppercase } from '../../services/firstLetterUppercase';
 import { getTypeColor, getTypeColorLabel } from '../../services/getTypeColors';
 import { StyledArrowLeft } from './styles';
+import { useState } from 'react';
 
 const PokemonDetails = ({ pokemonInfo }) => {
   const navigate = useNavigate();
   const { theme } = useTheme();
 
+  const [showAllMoves, setShowAllMoves] = useState(false);
+
+  const handleShowMoves = () => {
+    setShowAllMoves(!showAllMoves);
+  };
+
   if (!pokemonInfo) {
     return <div>Loading...</div>;
   }
 
-  const { gender, types, eggGroups, height, pokemonWeight, abilities, weaknesses, evolutionLine, nome, imagem } = pokemonInfo;
+  const { gender, types, eggGroups, height, pokemonWeight, abilities, weaknesses, evolutionLine, nome, imagem, moves } = pokemonInfo;
 
   const [malePercentage, femalePercentage] = gender !== 'Genderless' ? pokemonInfo.gender.split(', ').map(genderStr => parseFloat(genderStr.match(/\d+/)[0])) : [0, 0];
 
@@ -57,14 +64,25 @@ const PokemonDetails = ({ pokemonInfo }) => {
         <Div>
           <span>Height:</span>
           {height < 1 ? <p>{height} cm</p> : <p>{height} metro(s) </p>}
-          
 
           <span> Weight:</span>
           <p>{pokemonWeight} kg</p>
         </Div>
 
+        <span>Moves:</span>
+        <p>
+          {showAllMoves
+            ? moves.map(move => firstLetterUppercase(move)).join(", ")
+            : moves.slice(0, 3).map(move => firstLetterUppercase(move)).join(", ")}
+          {moves.length > 3 && (
+            <a onClick={handleShowMoves}>
+              {showAllMoves ? " ocultar " : "  ... mostrar mais"}
+            </a>
+          )}
+        </p>
+
         <span>Abilities:</span>
-        <p>{abilities.map(ability => firstLetterUppercase(ability)).join(", ")}</p>
+        <p>{abilities.map(ability => firstLetterUppercase(`${ability.name}: ${ability.description}`)).join(", ")}</p>
 
         <span>Weaknesses:</span>
         <p>{weaknesses.map(weakness => firstLetterUppercase(weakness)).join(", ")}</p>
@@ -75,6 +93,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
             <li key={index}>{firstLetterUppercase(pokemon)}</li>
           ))}
         </ul>
+
       </ContainerDescription>
     </Container>
   );

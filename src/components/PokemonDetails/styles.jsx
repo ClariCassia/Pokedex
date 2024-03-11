@@ -8,6 +8,11 @@ export const StyledArrowLeft = styled(FaArrowLeft)`
 
 export const Container = styled.div`
 display: flex;
+padding: 30px;
+
+img{
+  max-height: 550px;
+}
 
 @media (max-width: 1024px) {
   flex-direction: column;
@@ -33,7 +38,7 @@ display: flex;
   display: flex;
   flex-direction: column;
   max-width: 550px;
-  gap: 20px;
+  gap: 10px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
   background-color: ${props => props.background};
@@ -65,6 +70,18 @@ display: flex;
 
   p {
     text-align: center;   
+      }
+
+      a{
+        font-size: 12px;
+        transition: font-size 0.5s;       
+       
+      }
+
+      a:hover{
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
       }
 
   @media (max-width: 768px) {    
@@ -121,3 +138,4 @@ export const Div = styled.div`
   justify-content: space-between;
   gap:10px;
 `;
+
