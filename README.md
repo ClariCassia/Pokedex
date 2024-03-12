@@ -16,7 +16,7 @@ O propósito da aplicação é fornecer uma interface simples para visualizar um
 
  
 
-### Funcionalidades
+## ⚙️Funcionalidades
 
  **Listagem dos pokémons**: Listar os pokémons com o uso da API REST [PokéApi](https://pokeapi.co/).
 
@@ -31,7 +31,7 @@ O propósito da aplicação é fornecer uma interface simples para visualizar um
 **Exibir seções de detalhes dos pokémons**: Nome, Grupos de ovos,Tipo, Genêro, Movimentos, Habilidades, Fraquezas, Linha de Evolução.
 
 
-## Ferramentas Utilizadas
+## 🛠️ Ferramentas Utilizadas
 
 -  [React](https://pt-br.reactjs.org/) (utilizando,  [create-vite](https://vitejs.dev/guide/))
 -  [Styled-components](https://www.styled-components.com/)
@@ -47,7 +47,7 @@ O propósito da aplicação é fornecer uma interface simples para visualizar um
 -  [Context API ](https://pt-br.legacy.reactjs.org/docs/context.html)
 
 
-##  Decisões Adotadas
+## 🧠 Decisões Adotadas
 Passo a Passo para a Criação do Desafio:
 
  **1. Criação da estrutura react:** Comecei criando a estrutura básica do projeto React, optei pelo uso do Vite para manter tudo organizado. Também fiz uma limpeza nos arquivos, excluindo tudo o que não iría utilizar.
@@ -94,7 +94,8 @@ Espero que esse passo a passo seja útil para vocês também, e que se divirtam 
    git clone https://github.com/ClariCassia/Pokedex.git
    
    ```
-   - É possível também baixar o arquivo e desconpactar localmente:  ![imagem](./src/assets/gifs/download-project.gif)
+   - É possível também baixar o arquivo e desconpactar localmente:
+   - ![imagem](./src/assets/gifs/download-project.gif)
    
 
  **2. Acesse o Diretório:**
@@ -116,7 +117,7 @@ Espero que esse passo a passo seja útil para vocês também, e que se divirtam 
  **5. Acesse a Aplicação:**
    Abra o navegador e acesse [http://localhost:5173/](http://localhost:5173/).
 
-## Contribuições
+## 🤝 Contribuições
 
 
 Se quiser contribuir para este projeto, siga estes passos:
@@ -144,7 +145,8 @@ $ git push origin minha-alteracao
 ```
 Você deve navegar até o seu repositório onde fez o fork e clicar no botão *New pull request* no lado esquerdo da página.
 
-###  Agradeço antecipadamente pela sua contribuição, juntos podemos tornar este projeto ainda mais incrível! 🙏🌟
+Agradeço antecipadamente pela sua contribuição, juntos podemos tornar este projeto ainda mais incrível! 🙏🌟
+
 Com ❤️ por [Clarissa de Cássia](https://www.linkedin.com/in/clarissa-cassia-dev-front-end/) 😊
 
 
