@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getListUrl = async (offset = 0) => {
+const getListUrl = async (offset ) => {
     try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${offset}`);
         const { results } = response.data;
