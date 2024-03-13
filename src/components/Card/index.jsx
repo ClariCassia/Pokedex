@@ -1,6 +1,7 @@
 
 import { Card, Span } from './style'
 import { Link } from 'react-router-dom';
+import {firstLetterUppercase} from '../../services/firstLetterUppercase'
 
 const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel, theme }) => {
 
@@ -13,7 +14,7 @@ const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel
 
                 <div>
                     <img src={imagem} alt={nome} />
-                    <h2>{`${nome.charAt(0).toUpperCase()}${nome.slice(1)}`}</h2>
+                    <h2>{firstLetterUppercase(nome)}</h2>
                 </div>
 
             </Card>

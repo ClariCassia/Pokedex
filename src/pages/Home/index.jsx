@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { ContainerCard, ContainerHome, ContainerButton } from './style';
+import { ContainerCard, ContainerHome, ContainerButton , ContainerFiltro } from './style';
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
@@ -22,15 +22,16 @@ const Home = () => {
 
   return (
     <ContainerHome>
-      <label htmlFor="type">Filtrar por tipo: </label>
-      <select value={selectedType} onChange={(e) => handleTipoClick(e.target.value)}>
-        <option value="">Todos os tipos</option>
-        <option value="electric">Electric</option>
-        <option value="grass">Grama</option>
-        <option value="fire">Fire</option>
-        <option value="water">Water</option>   
-
-      </select>
+      <ContainerFiltro>
+        <label htmlFor="type">Filtrar por tipo: </label>
+        <select value={selectedType} onChange={(e) => handleTipoClick(e.target.value)}>
+          <option value="">Todos os tipos</option>
+          <option value="electric">Electric</option>
+          <option value="grass">Grama</option>
+          <option value="fire">Fire</option>
+          <option value="water">Water</option>
+        </select>
+      </ContainerFiltro>
 
       <ContainerCard>
         {pokemonsFiltrados.map((pokemon, index) => (

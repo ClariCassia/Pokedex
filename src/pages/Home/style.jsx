@@ -41,9 +41,8 @@ align-items: center;
 button{
     font-size: 20px;
     padding: 10px;
-    background-color: transparent;  
-    /* color: #004A94;  */   
-    color: ${props => props.textColor === '#212121' ?'#004A94': "white"};
+    background-color: transparent;     
+    color: ${props => props.textColor === '#212121' ? '#004A94' : "white"};
     font-weight: bold;
     transition: transform 0.3s, color 0.3s;  
 }
@@ -59,3 +58,20 @@ img{
 }
 
 `
+export const ContainerFiltro = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  label {
+    margin-right: 8px;
+  }
+
+  select {
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    background-color: transparent;  
+  }
+`;
