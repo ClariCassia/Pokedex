@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import { ContainerCard, ContainerHome, ContainerButton , ContainerFiltro } from './style';
+
+import { ContainerCard, ContainerHome, ContainerButton } from './style';
+import { Filtro } from "../../components/Filtro";
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
@@ -10,28 +11,19 @@ import { getTypeColor, getTypeColorLabel } from '../../services/getTypeColors';
 import LogoPokebola from '../../components/LogoPokebola';
 
 const Home = () => {
-  const [selectedType, setSelectedType] = useState('');
+
   const { pokemonsFiltrados, carregarMaisPokemons, selecionarTipo } = usePokemonData();
   const { theme } = useTheme();
-  const textColor = theme.color === '#212121' ? '#004A94' : 'white';  
+  const textColor = theme.color === '#212121' ? '#004A94' : 'white';
 
   const handleTipoClick = (tipo) => {
     selecionarTipo(tipo);
-    setSelectedType(tipo);
   };
 
   return (
-    <ContainerHome>
-      <ContainerFiltro>
-        <label htmlFor="type">Filtrar por tipo: </label>
-        <select value={selectedType} onChange={(e) => handleTipoClick(e.target.value)}>
-          <option value="">Todos os tipos</option>
-          <option value="electric">Electric</option>
-          <option value="grass">Grama</option>
-          <option value="fire">Fire</option>
-          <option value="water">Water</option>
-        </select>
-      </ContainerFiltro>
+    <ContainerHome >
+
+      <Filtro handleTipoClick={handleTipoClick} />
 
       <ContainerCard>
         {pokemonsFiltrados.map((pokemon, index) => (

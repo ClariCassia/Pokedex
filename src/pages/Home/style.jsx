@@ -7,24 +7,24 @@ export const ContainerCard = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 1180px;
+  max-width: 1024px;
   gap: 15px;
-  padding: 50px;
+  padding: 30px;
 
   @media (max-width: 1024px) and (min-width: 800px) {
-    padding: 20px;
-    justify-content: flex-start;
+    max-width: 500px;
+    padding: 10px 0 20px;
+  
   }
 
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 10px;
     max-width: 600px;
   }
 
   @media (max-width: 568px) {
     max-width: 400px;
-  }
-`;
+  }`;
 
 export const ContainerHome = styled.div`
   display: flex;
