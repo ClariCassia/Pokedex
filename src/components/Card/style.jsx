@@ -18,10 +18,6 @@ div{
     flex: 1;
 }
 
-img{
-    width: 150px;
-}
-
 h2{   
     color: white;
     
@@ -41,4 +37,10 @@ export const Span = styled.span`
     padding: 2px;
     text-align: center;
     border-radius: 5px;
+`
+export const PokemonImg = styled.img`
+width: 150px;  
+`
+export const ImgSymbol = styled.img`
+width: 30px;  
 `

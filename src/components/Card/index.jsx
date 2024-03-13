@@ -1,9 +1,9 @@
 
-import { Card, Span } from './style'
+import { Card, Span, PokemonImg,ImgSymbol } from './style'
 import { Link } from 'react-router-dom';
 import {firstLetterUppercase} from '../../services/firstLetterUppercase'
 
-const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel, theme }) => {
+const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel, theme ,img}) => {
 
   
     return (
@@ -11,9 +11,10 @@ const CardPokemon = ({ pokemon: { order, imagem, nome }, background, colorsLabel
             <Card background={background} shadow={theme}>
 
                 <Span colorslabel={colorsLabel}># {order}</Span>
+                <ImgSymbol src={img} alt="" />
 
                 <div>
-                    <img src={imagem} alt={nome} />
+                    <PokemonImg src={imagem} alt={nome} />
                     <h2>{firstLetterUppercase(nome)}</h2>
                 </div>
 

@@ -1,46 +1,72 @@
-import React from 'react'
-import { useState } from 'react';
-import { Container } from './style';
+import React, { useState } from 'react';
+import { CustomSelect, SelectLabel, SelectSelected, SelectItems, Option } from './style';
+import { typeImages } from '../../services/getTypeSimbol';
 
 const opcoesTipo = [
     { value: '', label: 'Todos os tipos' },
-    { value: '1', label: 'Normal' },
-    { value: '2', label: 'Lutador' },
-    { value: '3', label: 'Voador' },
-    { value: '4', label: 'Veneno' },
-    { value: '5', label: 'Terra' },
-    { value: '6', label: 'Pedra' },
-    { value: '7', label: 'Inseto' },
-    { value: '8', label: 'Fantasma' },
-    { value: '9', label: 'Aço' },
-    { value: '10', label: 'Fogo' },
-    { value: '11', label: 'Água' },
-    { value: '12', label: 'Grama' },
-    { value: '13', label: 'Elétrico' },
-    { value: '14', label: 'Psíquico' },
-    { value: '15', label: 'Gelo' },
-    { value: '16', label: 'Dragão' },
-    { value: '17', label: 'Sombrio' },
-    { value: '18', label: 'Fada' },
+    { value: 'normal', label: 'Normal' },
+    { value: 'fighting', label: 'Lutador' },
+    { value: 'flying', label: 'Voador' },
+    { value: 'poison', label: 'Venenoso' },
+    { value: 'ground', label: 'Terrestre' },
+    { value: 'rock', label: 'Pedra' },
+    { value: 'bug', label: 'Inseto' },
+    { value: 'ghost', label: 'Fantasma' },
+    { value: 'steel', label: 'Aço' },
+    { value: 'fire', label: 'Fogo' },
+    { value: 'water', label: 'Água' },
+    { value: 'grass', label: 'Grama' },
+    { value: 'electric', label: 'Elétrico' },
+    { value: 'psychic', label: 'Psíquico' },
+    { value: 'ice', label: 'Gelo' },
+    { value: 'dragon', label: 'Dragão' },
+    { value: 'dark', label: 'Sombrio' },
+    { value: 'fairy', label: 'Fada' },
 ];
 
 export function Filtro({ handleTipoClick }) {
-    
-    const [selectedType, setSelectedType] = useState('');   
+    const [selectedType, setSelectedType] = useState('');
+    const [showOptions, setShowOptions] = useState(false);
+
+    const getTypeImage = (type) => {
+        return typeImages[type] || 'url_da_imagem_default.png';
+    };
+
+    const handleSelectClick = () => {
+        setShowOptions(!showOptions);
+    };
+
+    const handleSelectChange = (value,label) => {
+        setSelectedType(label);
+        handleTipoClick(value);
+        setShowOptions(false);
+    };
 
     return (
-        <Container>
-            <label htmlFor="type">Filtrar por tipo: </label>
-            <select value={selectedType} onChange={(e) => {
-                setSelectedType(e.target.value);
-                handleTipoClick(e.target.value);
-            }}>
-                {opcoesTipo.map((opcao) => (
-                    <option key={opcao.value} value={opcao.value}>
-                        {opcao.label}
-                    </option>
-                ))}
-            </select>
-        </Container>
+        <CustomSelect>
+            <SelectLabel htmlFor="type">Filtrar por tipo: </SelectLabel>
+            <SelectSelected onClick={handleSelectClick}>
+                {selectedType || 'Selecione uma opção'}
+            </SelectSelected>
+            <SelectItems style={{ display: showOptions ? 'block' : 'none' }}>
+                <div>
+                    {opcoesTipo.map((opcao) => (
+                        <Option
+                            key={opcao.value}
+                            onClick={() => handleSelectChange(opcao.value, opcao.label)}
+                        >
+                            {opcao.label}
+                            {opcao.value && (
+                                <img
+                                    src={getTypeImage(opcao.value)}
+                                    alt={opcao.label}
+                                    style={{ width: '20px', height: '20px', marginLeft: '5px' }}
+                                />
+                            )}
+                        </Option>
+                    ))}
+                </div>
+            </SelectItems>
+        </CustomSelect>
     );
 }

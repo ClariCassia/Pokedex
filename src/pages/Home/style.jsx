@@ -9,7 +9,7 @@ export const ContainerCard = styled.div`
   flex-wrap: wrap;
   max-width: 1024px;
   gap: 15px;
-  padding: 30px;
+  padding: 22px 0 25px;
 
   @media (max-width: 1024px) and (min-width: 800px) {
     max-width: 500px;
