@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-
 export const CustomSelect = styled.div`
   position: relative;
   display: flex; 
   gap: 10px;
   padding: 10px 1px;    
 
-    @media (max-width: 1024px) {
-        padding: 20px;
-    }  
+  @media (max-width: 1024px) {
+    padding: 20px;
+  }
 `;
 
 export const SelectLabel = styled.label`  
@@ -24,23 +23,22 @@ export const SelectSelected = styled.div`
   padding: 5px 10px;
   cursor: pointer;
   width: 160px;
-  text-align:center;
+  text-align: center;
   font-size: 14px;
   border-radius: 3px;
-
 `;
 
 export const SelectItems = styled.div`
   position: absolute;
   margin-left: 100%; /* Posiciona à direita do CustomSelect */
   background-color: #efffff;
-  border: 1px solid #ccc; 
+  border: 1px solid rgba(0, 74, 148, 0.312);
   border-radius: 3px;
+  display: ${({ show }) => (show ? 'block' : 'none')};
   
-  
-  div{    
+  div {
     min-width: 300px;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
   }  
@@ -49,7 +47,7 @@ export const SelectItems = styled.div`
 export const Option = styled.p`
   padding: 8px 10px;
   width: 50%;
-  text-align:center;
+  text-align: center;
   cursor: pointer;
 
   &:hover {
@@ -57,10 +55,14 @@ export const Option = styled.p`
   }
 
   &:first-of-type {
-     
-        font-weight: bold;
-        width: 100%;
-        color: rgb(0, 74, 148);
-        
-    }
+    font-weight: bold;
+    width: 100%;
+    color: rgb(0, 74, 148);        
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+  }
 `;

@@ -14,7 +14,7 @@ const Home = () => {
   const { theme } = useTheme();
   const textColor = theme.color === '#212121' ? '#004A94' : 'white';
 
-  const handleTipoClick = (tipo) => {
+  const handleTypeClick = (tipo) => {
     selecionarTipo(tipo);
   };
 
@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <ContainerHome>
-      <Filtro handleTipoClick={handleTipoClick} />
+      <Filtro handleTypeClick={handleTypeClick} />
 
       <ContainerCard>
         {pokemonsFiltrados.map((pokemon, index) => (
