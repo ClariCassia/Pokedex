@@ -10,12 +10,12 @@ import { typeImages } from '../../services/getTypeSimbol';
 import LogoPokebola from '../../components/LogoPokebola';
 
 const Home = () => {
-  const { pokemonsFiltrados, carregarMaisPokemons, selecionarTipo } = usePokemonData();
+  const { pokemonsFiltered, loadMorePokemons, selectType } = usePokemonData();
   const { theme } = useTheme();
   const textColor = theme.color === '#212121' ? '#004A94' : 'white';
 
   const handleTypeClick = (tipo) => {
-    selecionarTipo(tipo);
+    selectType(tipo);
   };
 
   const getTypeImage = (type) => {
@@ -27,7 +27,7 @@ const Home = () => {
       <Filter handleTypeClick={handleTypeClick} />
 
       <ContainerCard>
-        {pokemonsFiltrados.map((pokemon, index) => (
+        {pokemonsFiltered.map((pokemon, index) => (
           <CardPokemon
             key={index}
             pokemon={pokemon}
@@ -44,7 +44,7 @@ const Home = () => {
         <Button
           label="Mostrar Mais"
           textColor={textColor}
-          onClick={carregarMaisPokemons}
+          onClick={loadMorePokemons}
         />
         <LogoPokebola />
       </ContainerButton>

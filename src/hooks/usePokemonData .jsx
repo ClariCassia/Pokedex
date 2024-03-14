@@ -1,55 +1,54 @@
 import { useState, useEffect } from "react";
 import { getListUrl, getLisFilter } from "../services/getUrlPokemon";
 import { mapPokemonData } from '../services/getPokemons'
-
 const usePokemonData = () => {
 
   const [pokemons, setPokemons] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [dadosCarregados, setDadosCarregados] = useState(false);
-  const [tipoSelecionado, setTipoSelecionado] = useState('');
-  const [pokemonsFiltrados, setPokemonsFiltrados] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [typeSelected, setTypeSelected] = useState('');
+  const [pokemonsFiltered, setPokemonsFiltered] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const pokemonData = await getListUrl(offset);
-        const novosPokemons = mapPokemonData(pokemonData);
-        setPokemons(novosPokemons);
-        setPokemonsFiltrados(novosPokemons);
-        setDadosCarregados(true);
+        const newPokemon = mapPokemonData(pokemonData);
+        setPokemons(newPokemon);
+        setPokemonsFiltered(newPokemon);
+        setDataLoaded(true);
       } catch (error) {
         console.error('Erro ao buscar pokemons:', error);
       }
     };
 
-    if (!dadosCarregados) {
+    if (!
+      dataLoaded) {
       fetchData();
     }
-  }, [offset, dadosCarregados]);
+  }, [offset,
+    dataLoaded]);
 
 
-  const selecionarTipo = (type) => {
-    setTipoSelecionado(type);
-
+  const selectType = (type) => {
+    setTypeSelected(type);
   };
 
   useEffect(() => {
 
 
-    if (tipoSelecionado === '') {
-      setPokemonsFiltrados(pokemons);
+    if (typeSelected === '') {
+      setPokemonsFiltered(pokemons);
     } else {
       const fetchData = async () => {
 
         try {
 
-          const pokemonData = await getLisFilter(tipoSelecionado);
-          const novosPokemons = mapPokemonData(pokemonData);
+          const pokemonData = await getLisFilter(typeSelected);
+          const newPokemon = mapPokemonData(pokemonData);
 
-
-          setPokemonsFiltrados(novosPokemons);
-          setDadosCarregados(true);
+          setPokemonsFiltered(newPokemon);
+          setDataLoaded(true);
 
         } catch (error) {
           console.error('Erro ao buscar pokemons:', error);
@@ -60,33 +59,33 @@ const usePokemonData = () => {
 
     }
 
-  }, [tipoSelecionado]);
+  }, [typeSelected]);
 
-  const carregarMaisPokemons = async () => {
-    const novoOffset = offset + 10;
+  const loadMorePokemons = async () => {
+
+    const newOffset = offset + 10;
 
     try {
 
-      const pokemonData = await getListUrl(novoOffset);
+      const pokemonData = await getListUrl(newOffset);
 
-      const novosPokemons = mapPokemonData(pokemonData);
+      const newPokemon = mapPokemonData(pokemonData);
 
-      setPokemons((prevPokemons) => [...prevPokemons, ...novosPokemons]);
+      setPokemons((prevPokemons) => [...prevPokemons, ...newPokemon]);
 
-      setOffset(novoOffset);
+      setOffset(newOffset);
 
-      if (tipoSelecionado === '') {
+      if (typeSelected === '') {
 
-        setPokemonsFiltrados((prevPokemonsFiltrados) => [...prevPokemonsFiltrados, ...novosPokemons]);
+        setPokemonsFiltered((prevPokemonsFiltered) => [...prevPokemonsFiltered, ...newPokemon]);
 
       } else {
 
-        const pokemonData = await getLisFilter(tipoSelecionado, novoOffset);
+        const pokemonData = await getLisFilter(typeSelected, newOffset);
 
-        const novosPokemons = mapPokemonData(pokemonData);
-        console.log("🚀 ~ carregarMaisPokemons ~ novosPokemons:", novosPokemons)
+        const newPokemon = mapPokemonData(pokemonData);       
 
-        setPokemonsFiltrados(() => [ ...novosPokemons]);
+        setPokemonsFiltered(() => [...newPokemon]);
 
       }
     } catch (error) {
@@ -95,7 +94,7 @@ const usePokemonData = () => {
   };
 
 
-  return { pokemonsFiltrados, carregarMaisPokemons, selecionarTipo };
+  return { pokemonsFiltered, loadMorePokemons, selectType };
 };
 
 export default usePokemonData;

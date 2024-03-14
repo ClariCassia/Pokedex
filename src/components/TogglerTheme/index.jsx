@@ -4,6 +4,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { themes } from '../../context/theme-context';
 
 const TogglerTheme = () => {
+  
   const { theme, setTheme } = useTheme();
   const [checked, setChecked] = useState(theme === themes.dark);
 

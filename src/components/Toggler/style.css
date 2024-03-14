@@ -19,7 +19,6 @@
   inset: 0;
   height: 100%;
   transform: translateX(-100%);
-
 }
 
 .theme__icon,
@@ -129,7 +128,6 @@
 .theme__toggle:hover {
   cursor: pointer;
 }
-
 
 .theme__toggle:focus {
   box-shadow: 0 0 0 0.125em var(--primary);

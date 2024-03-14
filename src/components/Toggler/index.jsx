@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import './style.css'
 
 const Toggler = ({ checked, onChange }) => {
+
     return (
+
         <span className="theme__toggle-wrap">
             <input
                 id="theme"
@@ -14,7 +16,9 @@ const Toggler = ({ checked, onChange }) => {
                 checked={checked}
                 onChange={onChange}
             />
+
             <span className="theme__fill"></span>
+
             <span className="theme__icon">
                 <span className="theme__icon-part"></span>
                 <span className="theme__icon-part"></span>
@@ -26,6 +30,7 @@ const Toggler = ({ checked, onChange }) => {
                 <span className="theme__icon-part"></span>
                 <span className="theme__icon-part"></span>
             </span>
+            
         </span>
     );
 };

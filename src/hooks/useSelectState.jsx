@@ -7,7 +7,7 @@ export function useSelectState(initialValue = '') {
         setShowOptions(!showOptions);
     };
 
-    const handleSelectChange = (value, label) => {
+    const handleSelectChange = (label) => {
         setSelectedType(label);
         setShowOptions(false);
     };
