@@ -3,17 +3,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Details from '../pages/Details';
 
-const Rotas = () => {
+const RoutesApp = () => {
     return (
         <BrowserRouter>
 
             <Routes>
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/Details/:nome" element={<Details />}></Route>
+                <Route path="/Details/:name" element={<Details />}></Route>
             </Routes>
 
         </BrowserRouter>
     )
 }
 
-export default Rotas
+export default RoutesApp

@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const createPokemonInfo = async (nome) => {
+const createPokemonInfo = async (name) => {
 
   try {
 
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
     const pokemonData = response.data;
 
-    const imagem = pokemonData.sprites?.other?.home?.front_default
+    const image = pokemonData.sprites?.other?.home?.front_default
 
     const speciesResponse = await axios.get(pokemonData.species.url);
     const speciesData = speciesResponse.data;
@@ -62,8 +62,8 @@ const createPokemonInfo = async (nome) => {
     const moves = pokemonData.moves.map(move => move.move.name);
 
     return {
-      nome,
-      imagem,
+      name,
+      image,
       description,
       gender,
       height,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { CustomSelect, SelectLabel, SelectSelected, SelectItems, Option } from './style';
 import { getTypeImage } from '../../services/getTypeImage';
-import { optionsType } from '../../services/optionsType';
-import { useSelectState } from '../../hooks/useSelectState';
+import { optionsType } from './../../services/optionsType';
+import { useSelectState } from './../../hooks/useSelectState';
 
 export function Filter({ handleTypeClick }) {
     const {
@@ -12,7 +12,7 @@ export function Filter({ handleTypeClick }) {
         handleSelectChange,
     } = useSelectState();
 
-    const handleTipoChange = (value) => {
+    const handleTipoChange = (value,label) => {
         handleTypeClick(value);
     };
 

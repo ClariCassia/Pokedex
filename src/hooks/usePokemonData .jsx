@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getListUrl, getLisFilter } from "../services/getUrlPokemon";
-import { mapPokemonData } from '../services/getPokemons'
+import { getPokemonUrl, getFilteredPokemon } from "../services/getPokemons";
+import { mapPokemonData } from '../services/getDataPokemons'
 const usePokemonData = () => {
 
   const [pokemons, setPokemons] = useState([]);
@@ -12,7 +12,7 @@ const usePokemonData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const pokemonData = await getListUrl(offset);
+        const pokemonData = await getPokemonUrl(offset);
         const newPokemon = mapPokemonData(pokemonData);
         setPokemons(newPokemon);
         setPokemonsFiltered(newPokemon);
@@ -29,7 +29,6 @@ const usePokemonData = () => {
   }, [offset,
     dataLoaded]);
 
-
   const selectType = (type) => {
     setTypeSelected(type);
   };
@@ -44,7 +43,7 @@ const usePokemonData = () => {
 
         try {
 
-          const pokemonData = await getLisFilter(typeSelected);
+          const pokemonData = await getFilteredPokemon(typeSelected);
           const newPokemon = mapPokemonData(pokemonData);
 
           setPokemonsFiltered(newPokemon);
@@ -56,7 +55,6 @@ const usePokemonData = () => {
       };
 
       fetchData();
-
     }
 
   }, [typeSelected]);
@@ -67,7 +65,7 @@ const usePokemonData = () => {
 
     try {
 
-      const pokemonData = await getListUrl(newOffset);
+      const pokemonData = await getPokemonUrl(newOffset);
 
       const newPokemon = mapPokemonData(pokemonData);
 
@@ -81,7 +79,7 @@ const usePokemonData = () => {
 
       } else {
 
-        const pokemonData = await getLisFilter(typeSelected, newOffset);
+        const pokemonData = await getFilteredPokemon(typeSelected, newOffset);
 
         const newPokemon = mapPokemonData(pokemonData);       
 
@@ -92,7 +90,6 @@ const usePokemonData = () => {
       console.error('Erro ao carregar mais pokemons:', error);
     }
   };
-
 
   return { pokemonsFiltered, loadMorePokemons, selectType };
 };

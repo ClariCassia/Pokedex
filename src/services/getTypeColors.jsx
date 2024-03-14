@@ -1,7 +1,6 @@
 export const getTypeColor = (type) => typeColors[type] || typeColors.normal;
 export const getTypeColorLabel = (type) => colorsLabel[type] || colorsLabel.normal;
 
-
 export const typeColors = {
     grass: "#8BBE8A",
     fire: "#FFA756",

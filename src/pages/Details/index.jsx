@@ -5,17 +5,17 @@ import PokemonDetails from '../../components/PokemonDetails';
 
 const Details = () => {
   const [pokemonInfo, setPokemonInfo] = useState(null);
-  
-  const { nome } = useParams();
+
+  const { name } = useParams();
 
   useEffect(() => {
     const fetchPokemonInfo = async () => {
-      const info = await createPokemonInfo(nome);
+      const info = await createPokemonInfo(name);
       setPokemonInfo(info);
     };
 
     fetchPokemonInfo();
-  }, [nome]);
+  }, [name]);
 
   return <PokemonDetails pokemonInfo={pokemonInfo} />;
 };

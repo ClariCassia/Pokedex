@@ -18,7 +18,6 @@ import gelo from '../assets/images-types/Gelo.png';
 import sombrio from '../assets/images-types/Sombrio.png';
 import voador from '../assets/images-types/Voador.png';
 
-
 export const typeImages = {
     grass: planta,
     fire: fogo,

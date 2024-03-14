@@ -10,6 +10,7 @@ import { typeImages } from '../../services/getTypeSimbol';
 import LogoPokebola from '../../components/LogoPokebola';
 
 const Home = () => {
+
   const { pokemonsFiltered, loadMorePokemons, selectType } = usePokemonData();
   const { theme } = useTheme();
   const textColor = theme.color === '#212121' ? '#004A94' : 'white';
@@ -19,14 +20,16 @@ const Home = () => {
   };
 
   const getTypeImage = (type) => {
-    return typeImages[type] || 'url_da_imagem_default.png';
+    return typeImages[type] || 'https://neonet.id/assets/images/slider/default.jpg';
   };
 
   return (
     <ContainerHome>
+
       <Filter handleTypeClick={handleTypeClick} />
 
       <ContainerCard>
+
         {pokemonsFiltered.map((pokemon, index) => (
           <CardPokemon
             key={index}
@@ -38,6 +41,7 @@ const Home = () => {
             <img src={getTypeImage(pokemon.type)} alt={pokemon.type} />
           </CardPokemon>
         ))}
+
       </ContainerCard>
 
       <ContainerButton>
@@ -48,7 +52,9 @@ const Home = () => {
         />
         <LogoPokebola />
       </ContainerButton>
+
     </ContainerHome>
+
   );
 };
 

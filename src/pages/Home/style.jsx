@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { bounce } from "../../animations/bounce";
 
-
 export const ContainerCard = styled.div`
   display: flex;
   align-items: center;
@@ -13,8 +12,7 @@ export const ContainerCard = styled.div`
 
   @media (max-width: 1024px) and (min-width: 800px) {
     max-width: 500px;
-    padding: 10px 0 20px;
-  
+    padding: 10px 0 20px;  
   }
 
   @media (max-width: 768px) {
@@ -32,7 +30,6 @@ export const ContainerHome = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 
 export const ContainerButton = styled.div`
 display: flex;
