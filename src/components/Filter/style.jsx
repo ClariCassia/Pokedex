@@ -34,7 +34,7 @@ export const SelectItems = styled.div`
   background-color: #efffff;
   border: 1px solid rgba(0, 74, 148, 0.312);
   border-radius: 3px;
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ show }) => (show === 'true' ? 'block' : 'none')};
   
   div {
     min-width: 300px;

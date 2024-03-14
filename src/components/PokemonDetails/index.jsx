@@ -22,7 +22,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
     return <div>Loading...</div>;
   }
 
-  const { gender, types, eggGroups, height, pokemonWeight, abilities, weaknesses, evolutionLine, nome, imagem, moves } = pokemonInfo;
+  const { gender, types, eggGroups, height, pokemonWeight, abilities, weaknesses, evolutionLine, name, image, moves } = pokemonInfo;
 
   const [malePercentage, femalePercentage] = gender !== 'Genderless' ? pokemonInfo.gender.split(', ').map(genderStr => parseFloat(genderStr.match(/\d+/)[0])) : [0, 0];
 
@@ -32,10 +32,11 @@ const PokemonDetails = ({ pokemonInfo }) => {
         <StyledArrowLeft theme={theme} />
       </BackButton>
 
-      <img src={imagem} alt="Imagem Pokemon" />
+      <img src={image} alt="Imagem Pokemon" />
 
       <ContainerDescription theme={theme} background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
-        <h2>{firstLetterUppercase(nome)}</h2>
+      <h2>{name ? firstLetterUppercase(name) : ""}</h2>
+
 
         <Div>
           <span>Egg Groups:</span>

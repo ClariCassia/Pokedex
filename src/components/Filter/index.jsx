@@ -26,7 +26,7 @@ export function Filter({ handleTypeClick }) {
                 {selectedType || 'Selecione uma opção'}
             </SelectSelected>
 
-            <SelectItems show={showOptions}>
+            <SelectItems show={showOptions.toString()}>
                 <div>
                     {optionsType.map((opcao) => (
                         <Option

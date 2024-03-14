@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { getPokemonUrl, getFilteredPokemon } from "../services/getPokemons";
+import { getPokemonUrl } from "../services/getPokemonUrl";
+import { getFilteredPokemon } from "../services/getPokemonsFiltered";
 import { mapPokemonData } from '../services/getDataPokemons'
 const usePokemonData = () => {
 
