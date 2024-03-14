@@ -27,7 +27,6 @@ h2{
     z-index: 2; 
   }
 `
-
 export const Span = styled.span`
     background-color: ${props => props.colorslabel};
     margin-top: 0; 

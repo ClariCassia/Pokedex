@@ -1,10 +1,10 @@
 import React from 'react';
 import { CustomSelect, SelectLabel, SelectSelected, SelectItems, Option } from './style';
 import { getTypeImage } from '../../services/getTypeImage';
-import { optionsType } from './../../services/optionsType';
-import { useSelectState } from './../../hooks/useSelectState';
+import { optionsType } from '../../services/optionsType';
+import { useSelectState } from '../../hooks/useSelectState';
 
-export function Filtro({ handleTypeClick }) {
+export function Filter({ handleTypeClick }) {
     const {
         selectedType,
         showOptions,
@@ -19,6 +19,7 @@ export function Filtro({ handleTypeClick }) {
     return (
 
         <CustomSelect>
+
             <SelectLabel htmlFor="type">Filtrar por tipo: </SelectLabel>
 
             <SelectSelected onClick={handleSelectClick}>

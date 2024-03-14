@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerHome, ContainerCard, ContainerButton } from './style';
-import { Filtro } from "../../components/Filtro";
+import { Filter } from "../../components/Filter";
 import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <ContainerHome>
-      <Filtro handleTypeClick={handleTypeClick} />
+      <Filter handleTypeClick={handleTypeClick} />
 
       <ContainerCard>
         {pokemonsFiltrados.map((pokemon, index) => (
