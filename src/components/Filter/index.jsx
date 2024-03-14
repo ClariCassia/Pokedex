@@ -3,8 +3,12 @@ import { CustomSelect, SelectLabel, SelectSelected, SelectItems, Option } from '
 import { getTypeImage } from '../../services/getTypeImage';
 import { optionsType } from './../../services/optionsType';
 import { useSelectState } from './../../hooks/useSelectState';
+import { useTheme } from './../../hooks/useTheme';
 
 export function Filter({ handleTypeClick }) {
+
+    const { theme } = useTheme();     
+
     const {
         selectedType,
         showOptions,
@@ -12,24 +16,24 @@ export function Filter({ handleTypeClick }) {
         handleSelectChange,
     } = useSelectState();
 
-    const handleTipoChange = (value,label) => {
+    const handleTipoChange = (value, label) => {
         handleTypeClick(value);
     };
 
     return (
 
-        <CustomSelect>
+        <CustomSelect >
 
-            <SelectLabel htmlFor="type">Filtrar por tipo: </SelectLabel>
+            <SelectLabel theme={theme} htmlFor="type">Filtrar por tipo: </SelectLabel>
 
-            <SelectSelected onClick={handleSelectClick}>
+            <SelectSelected theme={theme} onClick={handleSelectClick}>
                 {selectedType || 'Selecione uma opção'}
             </SelectSelected>
 
-            <SelectItems show={showOptions.toString()}>
+            <SelectItems theme={theme} show={showOptions.toString()}>
                 <div>
                     {optionsType.map((opcao) => (
-                        <Option
+                        <Option 
                             key={opcao.value}
                             onClick={() => {
                                 handleSelectChange(opcao.value, opcao.label);
