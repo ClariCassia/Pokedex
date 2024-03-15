@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 display: flex;
 padding: 30px;
+color: black;
 
 @media (max-width: 1024px) {
   flex-direction: column;
@@ -24,7 +25,6 @@ export const ContainerDescription = styled.div`
   gap: 20px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
-
   background-color: ${props => props.background};
 
   h2 {
@@ -49,8 +49,7 @@ export const ContainerDescription = styled.div`
 
       a{
         font-size: 12px;
-        transition: font-size 0.5s;       
-       
+        transition: font-size 0.5s;   
       }
 
       a:hover{

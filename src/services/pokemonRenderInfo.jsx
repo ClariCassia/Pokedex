@@ -2,15 +2,26 @@ import { firstLetterUppercase } from "./firstLetterUppercase";
 import { getTypeImage } from './getTypeImage';
 import styled from "styled-components";
 
+let fontSize = '';
 
-export const renderEvolutionLine = (evolutionLine) => (
-  <EvolutionLine>
-    <span>Evolution Line:</span>
-    {evolutionLine.map((pokemon, index) => (
-      <li key={index}>{firstLetterUppercase(pokemon)}</li>
-    ))}
-  </EvolutionLine>
-);
+
+export const renderEvolutionLine = (evolutionLine) => {
+  // Calcula o tamanho da fonte com base no comprimento da lista evolutionLine
+  const fontSize = evolutionLine.length > 5 ? '13px' : '16px';
+
+  return (
+    <EvolutionLine fontSize={fontSize}>
+      <span>Evolution Line:</span>
+      <div>
+        {evolutionLine.map((pokemon, index) => (
+          <li key={index}>{firstLetterUppercase(pokemon)}</li>
+        ))}
+      </div>
+    </EvolutionLine>
+  );
+};
+
+
 
 
 export const renderTypeSymbols = (types) => (
@@ -32,7 +43,9 @@ export const renderHeigthAndWeight = (height, pokemonWeight) => (
 );
 
 export const renderWeaknesses = (weaknesses) => (
+
   <>
+
     <span>Weaknesses:</span>
     {weaknesses.map(type => (
       <ImageSimbol key={type} src={getTypeImage(type)} alt={type} title={type} />
@@ -40,7 +53,7 @@ export const renderWeaknesses = (weaknesses) => (
   </>
 );
 
-export const renderGender = (gender,malePercentage,femalePercentage) => ( 
+export const renderGender = (gender, malePercentage, femalePercentage) => (
 
   <>
     {gender === 'Genderless' ? (
@@ -65,7 +78,7 @@ export const renderMoves = (moves, showAllMoves, toggleShowMoves) => (
     {showAllMoves
       ? moves.map(move => <MoveItem key={move} move={move} />)
       : moves.slice(0, 5).map(move => <MoveItem key={move} move={move} />)}
-    {moves.length > 5 && (
+    {moves.length > 3 && (
       <a onClick={toggleShowMoves}>
         {showAllMoves ? " ocultar " : "   mostrar mais"}
       </a>
@@ -81,7 +94,15 @@ export const ImageSimbol = styled.img`
  width:20px;
 `;
 export const EvolutionLine = styled.ul`
- font-size: 15px;
+  font-size: ${props => props.fontSize};
+
+ div{
+
+  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+ }
 `;
 export const Div = styled.div`
   display: flex;
@@ -121,7 +142,8 @@ export const ProgressBar = styled.div`
 `;
 
 export const StyledMove = styled.div`
-  border: 1px solid #ccc;
+  border: 1px solid  ${(props) => props.color};
+  border-radius: 2px 5px;
   padding: 4px 5px;
   margin: 5px;  
   display: inline-block; 

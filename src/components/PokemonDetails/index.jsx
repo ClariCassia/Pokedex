@@ -41,6 +41,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
     image,
     moves
   } = pokemonInfo;
+   
 
   const [malePercentage, femalePercentage] = gender !== 'Genderless' ? pokemonInfo.gender.split(', ').map(genderStr => parseFloat(genderStr.match(/\d+/)[0])) : [0, 0];
 
