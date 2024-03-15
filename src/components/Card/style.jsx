@@ -19,9 +19,9 @@ div{
 }
 
 h2{   
-    color: white;
-    
+    color: white;    
 }
+
 &:hover {
     transform: scale(1.05); 
     z-index: 2; 

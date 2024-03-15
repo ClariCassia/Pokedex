@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
 display: flex;
 padding: 30px;
@@ -23,6 +24,7 @@ export const ContainerDescription = styled.div`
   gap: 20px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
+
   background-color: ${props => props.background};
 
   h2 {
@@ -85,8 +87,6 @@ export const InfoSection = styled.div`
     font-size: 13px;
     
   }
-
-
 `;
 
 export const ImagePokemon = styled.img`

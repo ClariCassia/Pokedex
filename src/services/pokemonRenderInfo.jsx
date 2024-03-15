@@ -65,7 +65,7 @@ export const renderMoves = (moves, showAllMoves, toggleShowMoves) => (
     {showAllMoves
       ? moves.map(move => <MoveItem key={move} move={move} />)
       : moves.slice(0, 5).map(move => <MoveItem key={move} move={move} />)}
-    {moves.length > 4 && (
+    {moves.length > 5 && (
       <a onClick={toggleShowMoves}>
         {showAllMoves ? " ocultar " : "   mostrar mais"}
       </a>
@@ -73,12 +73,9 @@ export const renderMoves = (moves, showAllMoves, toggleShowMoves) => (
   </div>
 );
 
-
 const MoveItem = ({ move }) => {
   return <StyledMove>{firstLetterUppercase(move)}</StyledMove>;
 };
-
-
 
 export const ImageSimbol = styled.img`
  width:20px;
@@ -125,7 +122,8 @@ export const ProgressBar = styled.div`
 
 export const StyledMove = styled.div`
   border: 1px solid #ccc;
-  padding: 3px;
+  padding: 4px 5px;
   margin: 5px;  
-  display: inline-block; /* Exibe o MoveItem em linha */
+  display: inline-block; 
+  font-size: 12px;
 `;

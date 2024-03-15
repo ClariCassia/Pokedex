@@ -51,7 +51,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
       <ImagePokemon src={image} alt="Imagem Pokemon" />
 
-      <ContainerDescription background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
+      <ContainerDescription theme={theme}  background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
 
         <h2>{name ? firstLetterUppercase(name) : "Nome indisponivel"}</h2>
 
@@ -79,9 +79,10 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
         <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Moves:</InfoLabel>
 
-        {renderMoves(moves, showAllMoves, toggleShowMoves)}
+        {renderMoves(moves, showAllMoves, toggleShowMoves,)}
 
       </ContainerDescription>
+      
     </Container>
   );
 };
