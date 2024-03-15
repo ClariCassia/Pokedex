@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
 display: flex;
 padding: 30px;
@@ -25,7 +24,7 @@ export const ContainerDescription = styled.div`
   gap: 20px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
-  background-color: ${props => props.background};
+  background-color: ${props => props.background};  
 
   h2 {
     font-size: 40px;
@@ -81,6 +80,7 @@ export const InfoSection = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  
 
   p{
     font-size: 13px;
@@ -108,6 +108,7 @@ export const InfoLabel = styled.p`
 export const StatsContainer = styled.div` 
   display: flex;
   align-items: center;
+ 
 
   justify-content: space-between;
   flex-wrap: wrap;

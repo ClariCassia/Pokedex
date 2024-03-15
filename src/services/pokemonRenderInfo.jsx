@@ -11,7 +11,7 @@ export const renderEvolutionLine = (evolutionLine) => {
 
   return (
     <EvolutionLine fontSize={fontSize}>
-      <span>Evolution Line:</span>
+      <span>Linha de Evolução: </span>
       <div>
         {evolutionLine.map((pokemon, index) => (
           <li key={index}>{firstLetterUppercase(pokemon)}</li>
@@ -26,7 +26,7 @@ export const renderEvolutionLine = (evolutionLine) => {
 
 export const renderTypeSymbols = (types) => (
   <Div>
-    <span>Type:</span>
+    <span>Tipo:</span>
     {types.map(type => (
       <ImageSimbol key={type} src={getTypeImage(type)} alt={type} title={type} />
     ))}
@@ -35,9 +35,9 @@ export const renderTypeSymbols = (types) => (
 
 export const renderHeigthAndWeight = (height, pokemonWeight) => (
   <>
-    <span>Height:</span>
+    <span>Altura:</span>
     <p>{height < 1 ? `${height} cm` : `${height} metro(s)`}</p>
-    <span>Weight:</span>
+    <span>Peso:</span>
     <p>{pokemonWeight} kg</p>
   </>
 );
@@ -46,7 +46,7 @@ export const renderWeaknesses = (weaknesses) => (
 
   <>
 
-    <span>Weaknesses:</span>
+    <span>Fraquezas:</span>
     {weaknesses.map(type => (
       <ImageSimbol key={type} src={getTypeImage(type)} alt={type} title={type} />
     ))}

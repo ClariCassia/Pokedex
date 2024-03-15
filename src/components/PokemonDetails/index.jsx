@@ -68,17 +68,17 @@ const PokemonDetails = ({ pokemonInfo }) => {
           {renderWeaknesses(weaknesses)}
         </StatsContainer>
 
-        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Gender:</InfoLabel>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Genero:</InfoLabel>
 
         <StatsContainer>
           {renderGender(gender, malePercentage, femalePercentage)}
         </StatsContainer>
 
-        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Abilities:</InfoLabel>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Habilidades:</InfoLabel>
 
         <Abilitys>{abilities.map(ability => firstLetterUppercase(`${ability.name}: ${ability.description}`)).join(", ")}</Abilitys>
 
-        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Moves:</InfoLabel>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Movimentos:</InfoLabel>
 
         {renderMoves(moves, showAllMoves, toggleShowMoves,)}
 

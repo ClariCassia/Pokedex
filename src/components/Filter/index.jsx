@@ -1,57 +1,54 @@
-import React from 'react';
 import { CustomSelect, SelectLabel, SelectSelected, SelectItems, Option } from './style';
 import { getTypeImage } from '../../services/getTypeImage';
 import { optionsType } from './../../services/optionsType';
 import { useSelectState } from './../../hooks/useSelectState';
 import { useTheme } from './../../hooks/useTheme';
 
+
 export function Filter({ handleTypeClick }) {
+    const { theme } = useTheme();
+    const { selectedType, showOptions, handleSelectClick, handleSelectChange, setShowOptions } = useSelectState();
 
-    const { theme } = useTheme();     
-
-    const {
-        selectedType,
-        showOptions,
-        handleSelectClick,
-        handleSelectChange,
-    } = useSelectState();
-
-    const handleTipoChange = (value, label) => {
+    const handleSelectOptionClick = (value) => {
         handleTypeClick(value);
+        setShowOptions(false);
     };
 
     return (
-
-        <CustomSelect >
-
+        <CustomSelect>
             <SelectLabel theme={theme} htmlFor="type">Filtrar por tipo: </SelectLabel>
-
             <SelectSelected theme={theme} onClick={handleSelectClick}>
                 {selectedType || 'Selecione uma opção'}
             </SelectSelected>
-
-            <SelectItems theme={theme} show={showOptions.toString()}>
+            <SelectItems theme={theme} show={`${showOptions}`}>
                 <div>
-                    {optionsType.map((opcao) => (
-                        <Option 
-                            key={opcao.value}
-                            onClick={() => {
-                                handleSelectChange(opcao.value, opcao.label);
-                                handleTipoChange(opcao.value);
-                            }}
-                        >
-                            {opcao.label}
-                            {opcao.value && (
-                                <img
-                                    src={getTypeImage(opcao.value)}
-                                    alt={opcao.label}
-                                />
-                            )}
-                        </Option>
+                    {optionsType.map((option) => (
+                        <FilterOption
+                            key={option.value}
+                            option={option}
+                            handleSelectOptionClick={handleSelectOptionClick}
+                        />
                     ))}
                 </div>
             </SelectItems>
-
         </CustomSelect>
+    );
+}
+
+function FilterOption({ option, handleSelectOptionClick }) {
+    const handleOptionClick = () => {
+        handleSelectOptionClick(option.value);
+    };
+
+    return (
+        <Option onClick={handleOptionClick}>
+            {option.label}
+            {option.value && (
+                <img
+                    src={getTypeImage(option.value)}
+                    alt={option.label}
+                />
+            )}
+        </Option>
     );
 }
