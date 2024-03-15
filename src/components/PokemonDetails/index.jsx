@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../hooks/useTheme';
 import { firstLetterUppercase } from '../../services/firstLetterUppercase';
-import { getTypeColor, getTypeColorLabel } from '../../services/getTypeColors';
+import { getTypeColor, getTypeColorLabel } from '../../utils/getTypeColors';
 import { ButtoArrow } from '../ButtoArrow';
 import {
   Container,
@@ -14,7 +14,7 @@ import {
   Abilitys,
 } from './styles';
 
-import { renderEvolutionLine, renderTypeSymbols, renderHeigthAndWeight, renderWeaknesses, renderGender, renderMoves } from '../../services/pokemonRenderInfo';
+import { renderEvolutionLine, renderTypeSymbols, renderHeigthAndWeight, renderWeaknesses, renderGender, renderMoves } from '../../utils/pokemonRenderInfo';
 
 const PokemonDetails = ({ pokemonInfo }) => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
     image,
     moves
   } = pokemonInfo;
-   
+
 
   const [malePercentage, femalePercentage] = gender !== 'Genderless' ? pokemonInfo.gender.split(', ').map(genderStr => parseFloat(genderStr.match(/\d+/)[0])) : [0, 0];
 
@@ -52,7 +52,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
 
       <ImagePokemon src={image} alt="Imagem Pokemon" />
 
-      <ContainerDescription theme={theme}  background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
+      <ContainerDescription theme={theme} background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
 
         <h2>{name ? firstLetterUppercase(name) : "Nome indisponivel"}</h2>
 
@@ -83,7 +83,7 @@ const PokemonDetails = ({ pokemonInfo }) => {
         {renderMoves(moves, showAllMoves, toggleShowMoves,)}
 
       </ContainerDescription>
-      
+
     </Container>
   );
 };

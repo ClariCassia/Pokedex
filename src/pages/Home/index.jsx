@@ -5,8 +5,8 @@ import { useTheme } from "../../hooks/useTheme";
 import usePokemonData from "../../hooks/usePokemonData ";
 import CardPokemon from "../../components/Card";
 import { Button } from "../../components/Button";
-import { getTypeColor, getTypeColorLabel } from '../../services/getTypeColors';
-import { typeImages } from '../../services/getTypeSimbol';
+import { getTypeColor, getTypeColorLabel } from '../../utils/getTypeColors';
+import { typeImages } from '../../utils/getTypeSimbol';
 import LogoPokebola from '../../components/LogoPokebola';
 
 const Home = () => {
