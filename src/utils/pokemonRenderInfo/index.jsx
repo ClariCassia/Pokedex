@@ -9,7 +9,6 @@ import {
   StyledMove
 } from "./style";
 
-
 export const renderEvolutionLine = (evolutionLine) => {
 
   const fontSize = evolutionLine.length > 5 ? '13px' : '16px';
@@ -47,7 +46,6 @@ export const renderHeigthAndWeight = (height, pokemonWeight) => (
 export const renderWeaknesses = (weaknesses) => (
 
   <>
-
     <span>Fraquezas:</span>
     {weaknesses.map(type => (
       <ImageSimbol key={type} src={getTypeImage(type)} alt={type} title={type} />
@@ -56,7 +54,6 @@ export const renderWeaknesses = (weaknesses) => (
 );
 
 export const renderGender = (gender, malePercentage, femalePercentage) => (
-
   <>
     {gender === 'Genderless' ? (
       <p>Sem especificação de gênero</p>

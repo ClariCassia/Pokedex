@@ -64,7 +64,6 @@ export const ContainerDescription = styled.div`
   }
 `;
 
-
 export const BackButton = styled.button`
   display: flex;
   background-color: transparent;
@@ -79,12 +78,10 @@ export const InfoSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5px;
-  
+  gap: 5px;  
 
   p{
-    font-size: 13px;
-    
+    font-size: 13px;    
   }
 `;
 
@@ -103,16 +100,15 @@ export const InfoLabel = styled.p`
     font-weight :bold ;
     border-radius: 15px 2px;
     color: aliceblue;
-
 `;
+
 export const StatsContainer = styled.div` 
   display: flex;
   align-items: center;
- 
-
   justify-content: space-between;
   flex-wrap: wrap;
 `;
+
 export const Abilitys = styled.p` 
   font-size: 14px;
 `;

@@ -4,7 +4,6 @@ import { optionsType } from './../../services/optionsType';
 import { useSelectState } from './../../hooks/useSelectState';
 import { useTheme } from './../../hooks/useTheme';
 
-
 export function Filter({ handleTypeClick }) {
     const { theme } = useTheme();
     const { selectedType, showOptions, handleSelectClick, handleSelectChange, setShowOptions } = useSelectState();

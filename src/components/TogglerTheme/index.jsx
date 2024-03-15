@@ -6,8 +6,7 @@ import { themes } from '../../context/theme-context';
 const TogglerTheme = () => {
   
   const { theme, setTheme } = useTheme();
-  const [checked, setChecked] = useState(theme === themes.dark);
-
+  const [checked, setChecked] = useState(theme === themes.dark);  
   const handleToggle = () => {
     const newTheme = theme === themes.light ? themes.dark : themes.light;
     setTheme(newTheme);

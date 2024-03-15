@@ -38,9 +38,7 @@ export const ProgressBar = styled.div`
   font-weight: bold;
   position: relative;
   overflow: hidden;
-  padding:  4px 2px;
-
- 
+  padding:  4px 2px; 
 `;
 
 export const StyledMove = styled.div`
