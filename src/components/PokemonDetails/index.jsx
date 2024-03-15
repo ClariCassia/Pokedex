@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, ContainerDescription, ProgressBarContainer, ProgressBar, BackButton, Div, } from './styles';
-
 import { useTheme } from '../../hooks/useTheme';
 import { firstLetterUppercase } from '../../services/firstLetterUppercase';
 import { getTypeColor, getTypeColorLabel } from '../../services/getTypeColors';
-import { StyledArrowLeft } from './styles';
-import { useState } from 'react';
+import { ButtoArrow } from '../ButtoArrow';
+import {
+  Container,
+  ImagePokemon,
+  ContainerDescription,
+  InfoSection,
+  InfoLabel,
+  StatsContainer,
+  Abilitys,
+} from './styles';
+
+import { renderEvolutionLine, renderTypeSymbols, renderHeigthAndWeight, renderWeaknesses, renderGender, renderMoves } from '../../services/pokemonRenderInfo';
 
 const PokemonDetails = ({ pokemonInfo }) => {
   const navigate = useNavigate();
   const { theme } = useTheme();
-
   const [showAllMoves, setShowAllMoves] = useState(false);
 
-  const handleShowMoves = () => {
+  const toggleShowMoves = () => {
     setShowAllMoves(!showAllMoves);
   };
 
@@ -22,78 +29,57 @@ const PokemonDetails = ({ pokemonInfo }) => {
     return <div>Loading...</div>;
   }
 
-  const { gender, types, eggGroups, height, pokemonWeight, abilities, weaknesses, evolutionLine, name, image, moves } = pokemonInfo;
+  const {
+    gender,
+    types,
+    height,
+    pokemonWeight,
+    abilities,
+    weaknesses,
+    evolutionLine,
+    name,
+    image,
+    moves
+  } = pokemonInfo;
 
   const [malePercentage, femalePercentage] = gender !== 'Genderless' ? pokemonInfo.gender.split(', ').map(genderStr => parseFloat(genderStr.match(/\d+/)[0])) : [0, 0];
 
   return (
     <Container>
-      <BackButton onClick={() => navigate(-1)}>
-        <StyledArrowLeft theme={theme} />
-      </BackButton>
 
-      <img src={image} alt="Imagem Pokemon" />
+      <ButtoArrow theme={theme} navegation={navigate}></ButtoArrow>
 
-      <ContainerDescription theme={theme} background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
-      <h2>{name ? firstLetterUppercase(name) : ""}</h2>
+      <ImagePokemon src={image} alt="Imagem Pokemon" />
 
+      <ContainerDescription background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>
 
-        <Div>
-          <span>Egg Groups:</span>
-          <p>{eggGroups.map(group => firstLetterUppercase(group)).join(", ")}</p>
+        <h2>{name ? firstLetterUppercase(name) : "Nome indisponivel"}</h2>
 
-          <span>Type:</span>
-          <p>{types.map(type => firstLetterUppercase(type)).join(", ")}</p>
-        </Div>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Características</InfoLabel>
 
-        <span>Gender:</span>
-        {gender === 'Genderless' ? (
-          <p>Sem especificação de gênero</p>
-        ) : (
-          <ProgressBarContainer>
-            <p>Masculino:</p>
-            <ProgressBar color="#105be7b5" width={malePercentage}>
-              {malePercentage}%
-            </ProgressBar>
-            <p>Feminino:</p>
-            <ProgressBar color="#ff0783" width={femalePercentage}>
-              {femalePercentage}%
-            </ProgressBar>
-          </ProgressBarContainer>
-        )}
+        <InfoSection>
+          {renderEvolutionLine(evolutionLine)}
+          {renderTypeSymbols(types)}
+        </InfoSection>
 
-        <Div>
-          <span>Height:</span>
-          {height < 1 ? <p>{height} cm</p> : <p>{height} metro(s) </p>}
+        <StatsContainer>
+          {renderHeigthAndWeight(height, pokemonWeight)}
+          {renderWeaknesses(weaknesses)}
+        </StatsContainer>
 
-          <span> Weight:</span>
-          <p>{pokemonWeight} kg</p>
-        </Div>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Gender:</InfoLabel>
 
-        <span>Moves:</span>
-        <p>
-          {showAllMoves
-            ? moves.map(move => firstLetterUppercase(move)).join(", ")
-            : moves.slice(0, 3).map(move => firstLetterUppercase(move)).join(", ")}
-          {moves.length > 3 && (
-            <a onClick={handleShowMoves}>
-              {showAllMoves ? " ocultar " : "  ... mostrar mais"}
-            </a>
-          )}
-        </p>
+        <StatsContainer>
+          {renderGender(gender, malePercentage, femalePercentage)}
+        </StatsContainer>
 
-        <span>Abilities:</span>
-        <p>{abilities.map(ability => firstLetterUppercase(`${ability.name}: ${ability.description}`)).join(", ")}</p>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Abilities:</InfoLabel>
 
-        <span>Weaknesses:</span>
-        <p>{weaknesses.map(weakness => firstLetterUppercase(weakness)).join(", ")}</p>
+        <Abilitys>{abilities.map(ability => firstLetterUppercase(`${ability.name}: ${ability.description}`)).join(", ")}</Abilitys>
 
-        <span>Evolution Line:</span>
-        <ul>
-          {evolutionLine.map((pokemon, index) => (
-            <li key={index}>{firstLetterUppercase(pokemon)}</li>
-          ))}
-        </ul>
+        <InfoLabel background={getTypeColor(types[0])} color={getTypeColorLabel(types[0])}>Moves:</InfoLabel>
+
+        {renderMoves(moves, showAllMoves, toggleShowMoves)}
 
       </ContainerDescription>
     </Container>

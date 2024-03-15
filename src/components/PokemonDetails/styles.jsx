@@ -1,44 +1,26 @@
 import styled from 'styled-components';
-import { FaArrowLeft } from 'react-icons/fa';
-
-export const StyledArrowLeft = styled(FaArrowLeft)`
-  color: ${props => props.theme.color}; 
-  font-size: 30px;   
- `;
 
 export const Container = styled.div`
 display: flex;
 padding: 30px;
-
-img{
-  max-height: 550px;
-}
 
 @media (max-width: 1024px) {
   flex-direction: column;
   padding: 30px;
   align-items:center;
   justify-content: center;
-
-  img {
-    width: 350px;     
-    padding-bottom: 30px; 
-  }
-}
+ }
 
 @media (max-width: 768px) {
-  font-size: 12px;   
-  img {
-    width: 250px;
-  }
+  font-size: 12px;    
 }
 `;
 
- export const ContainerDescription = styled.div`
+export const ContainerDescription = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 550px;
-  gap: 10px;
+  gap: 20px;
   padding: 20px;
   box-shadow: ${props => props.theme.boxShadow};
   background-color: ${props => props.background};
@@ -54,23 +36,14 @@ img{
   }
 
   span {
-    background-color: ${props => props.color};
-    padding: 5px 15px;
-    color: white;
-    text-align: center;
-    border-radius: 3px;
-    font-size: 18px;
+    font-weight: bold;
+    font-size: 14px;
   }
 
   ul {
     display: flex;
-    justify-content: space-around;
-    list-style: none;
-  }
-
-  p {
-    text-align: center;   
-      }
+   gap: 15px;
+    list-style: none;  }
 
       a{
         font-size: 12px;
@@ -91,36 +64,6 @@ img{
   }
 `;
 
-export const ProgressBarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-`;
-
-export const ProgressBar = styled.div` 
-  border-radius: 10px;
-  background-color: ${(props) => props.color};
-  min-width: 10%;
-  width: ${(props) => props.width}%;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  position: relative;
-  overflow: hidden;
-  padding:  4px 2px;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 1;
-  }
-`;
 
 export const BackButton = styled.button`
   display: flex;
@@ -132,10 +75,46 @@ export const BackButton = styled.button`
   }
 `;
 
-export const Div = styled.div`
+export const InfoSection = styled.div`
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: space-between;
-  gap:10px;
+  gap: 5px;
+
+  p{
+    font-size: 13px;
+    
+  }
+
+
 `;
+
+export const ImagePokemon = styled.img`
+  max-height: 550px;
+
+  @media (max-width: 1024px) {  
+    width: 350px;    
+  }
+`;
+
+export const InfoLabel = styled.p`
+    background-color: ${props => props.color};
+    padding: 5px 15px;
+    color: black; 
+    font-weight :bold ;
+    border-radius: 15px 2px;
+    color: aliceblue;
+
+`;
+export const StatsContainer = styled.div` 
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+export const Abilitys = styled.p` 
+  font-size: 14px;
+`;
+
 

@@ -27,7 +27,6 @@ const createPokemonInfo = async (name) => {
     const description = speciesData.flavor_text_entries.find(entry => entry.language.name === 'it').flavor_text;
 
     const captureRate = speciesData.capture_rate;
-    const eggGroups = speciesData.egg_groups.map(group => group.name);
     const pokemonWeight = pokemonData.weight;
 
     const evolutionChainResponse = await axios.get(speciesData.evolution_chain.url);
@@ -68,8 +67,7 @@ const createPokemonInfo = async (name) => {
       gender,
       height,
       weight,
-      captureRate,
-      eggGroups,
+      captureRate, 
       pokemonWeight,
       evolutionLine, abilities,
       types,
