@@ -10,6 +10,7 @@ color: black;
   padding: 30px;
   align-items:center;
   justify-content: center;
+  overflow:hidden ;
  }
 
 @media (max-width: 768px) {

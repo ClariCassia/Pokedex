@@ -1,14 +1,20 @@
 <p align="center">
-  <img alt="Pokedex logo" src="./src//assets/logo.svg" width="400px" />
+  <img alt="Pokedex logo" src="./src/assets/pokedéx-logo.svg" width="400px" />
 </p>
 
-<p align="center" fontSize="60px">
+<h3 align="center" fontSize="60px">
   Desafio React-Avançado
 </p>
 
 <p align="center">
-  <img alt="Layout da aplicação" width="100%" src="./.github/screenshot.png" />
+  <img alt="Layout da aplicação" width="100%" src="./src/assets/gifs/gif-desktop.gif" />
 </p>
+
+ <details>
+      <summary > Versão Mobile</summary>
+      <br>
+       <img alt="Layout da aplicação" width="40%" src="./src/assets/gifs/gif-mobile.gif" />
+    </details>
 
 ## 💻 Projeto
 
