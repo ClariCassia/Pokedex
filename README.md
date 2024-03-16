@@ -18,7 +18,9 @@
 
 ## 💻 Projeto
 
-O propósito da aplicação é fornecer uma interface simples para visualizar uma lista de Pokémon, exibindo inicialmente 10 cards com detalhes básicos de cada Pokémon. Ao clicar em um card, o usuário é direcionado para uma página detalhada com informações mais específicas do Pokémon selecionado. Além disso, há um botão de "Carregar Mais" que adiciona mais 10 Pokémon à lista existente. Para ver o projeto pronto [clique aqui ](https://clari-cassia-projetcs-colecao-de-repositorios.vercel.app/)🚀
+O propósito da aplicação é fornecer uma interface simples para visualizar uma lista de Pokémon, exibindo inicialmente 10 cards com detalhes básicos de cada Pokémon. Ao clicar em um card, o usuário é direcionado para uma página detalhada com informações mais específicas do Pokémon selecionado. Além disso, há um botão de "Carregar Mais" que adiciona mais 10 Pokémon à lista existente. 
+
+#### Para ver o projeto pronto [clique aqui ](https://clari-cassia-projetcs-pokedex.vercel.app/)🚀
 
  
 
