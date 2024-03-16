@@ -1,14 +1,14 @@
 import { Card, Span, PokemonImg,ImgSymbol } from './style'
 import { Link } from 'react-router-dom';
 import {firstLetterUppercase} from '../../services/firstLetterUppercase'
-const CardPokemon = ({ pokemon: { order, image, name}, background, colorsLabel, theme ,img}) => {
+const CardPokemon = ({ pokemon: { order, image, name}, background, colorsLabel, theme ,simbol}) => {
   
     return (
         <Link to={`/Details/${name}`} style={{ textDecoration: 'none' }}>
             <Card background={background} shadow={theme}>
 
                 <Span colorslabel={colorsLabel}># {order}</Span>
-                <ImgSymbol src={img} alt="" />
+                <ImgSymbol src={simbol} alt="" />
 
                 <div>
                     <PokemonImg src={image} alt={name} />

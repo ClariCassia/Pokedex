@@ -6,7 +6,7 @@ import { useTheme } from './../../hooks/useTheme';
 
 export function Filter({ handleTypeClick }) {
     const { theme } = useTheme();
-    const { selectedType, showOptions, handleSelectClick, handleSelectChange, setShowOptions } = useSelectState();
+    const { selectedType, showOptions, handleSelectClick,  setShowOptions } = useSelectState();
 
     const handleSelectOptionClick = (value) => {
         handleTypeClick(value);
